@@ -1,0 +1,273 @@
+2022-12-01 06:10:42,288 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:11:08,302 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:12:25,682 INFO S.Server [main] Received new request from /127.0.0.1:62196
+2022-12-01 06:12:25,695 INFO S.Server [main] Services.Request was sent to address /127.0.0.1:62196
+2022-12-01 06:13:41,581 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:16:25,377 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:17:19,638 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:20:06,131 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:27:38,981 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:27:47,534 INFO S.Server [main] Received new request from /127.0.0.1:62196
+2022-12-01 06:27:47,535 INFO S.Server [main] Request: command: show; args: [];
+2022-12-01 06:27:47,537 INFO S.Server [main] Request was sent to address /127.0.0.1:62196
+2022-12-01 06:27:47,538 INFO S.Server [main] Response: success: true; content: Collection is empty ;
+2022-12-01 06:29:17,142 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:29:36,112 INFO S.Server [main] Received new request from /127.0.0.1:62196
+2022-12-01 06:29:36,113 INFO S.Server [main] Request: command: add; args: []
+2022-12-01 06:29:36,135 INFO S.Server [main] Request was sent to address /127.0.0.1:62196
+2022-12-01 06:29:36,135 INFO S.Server [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 06:29:49,681 INFO S.Server [main] Received new request from /127.0.0.1:62196
+2022-12-01 06:29:49,681 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:29:49,694 INFO S.Server [main] Request was sent to address /127.0.0.1:62196
+2022-12-01 06:29:49,695 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 5...
+2022-12-01 06:30:04,495 INFO S.Server [main] Received new request from /127.0.0.1:62196
+2022-12-01 06:30:04,495 INFO S.Server [main] Request: command: remove_at; args: []
+2022-12-01 06:30:04,496 INFO S.Server [main] Request was sent to address /127.0.0.1:62196
+2022-12-01 06:30:04,497 INFO S.Server [main] Request: success: false; content: Command <removed_at> must have...
+2022-12-01 06:32:38,149 INFO S.Server [main] Received new request from /127.0.0.1:49639
+2022-12-01 06:32:38,149 INFO S.Server [main] Request: command: add_if_min; args: []
+2022-12-01 06:35:12,302 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:44:05,671 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:44:05,672 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:44:05,675 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:44:05,676 INFO S.Server [main] Request: success: true; content: 
+2022-12-01 06:45:20,540 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:45:23,219 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:45:23,220 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:45:23,222 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:45:23,223 INFO S.Server [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 06:45:31,906 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:45:31,906 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:45:31,906 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:45:31,906 INFO S.Server [main] Request: success: true; content: Collection is empty 
+2022-12-01 06:46:01,963 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:46:01,963 INFO S.Server [main] Request: command: add_if_min; args: []
+2022-12-01 06:46:01,969 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:46:01,970 INFO S.Server [main] Request: success: true; content: 
+2022-12-01 06:46:05,508 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:46:05,509 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:46:05,532 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:46:05,533 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:46:18,077 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:46:18,077 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:46:18,077 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:46:18,078 INFO S.Server [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 06:46:41,801 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:46:41,802 INFO S.Server [main] Request: command: add_if_min; args: []
+2022-12-01 06:46:41,802 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:46:41,802 INFO S.Server [main] Request: success: false; content: 
+2022-12-01 06:46:43,442 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:46:43,443 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:46:43,444 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:46:43,444 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:47:05,985 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:05,985 INFO S.Server [main] Request: command: add_if_min; args: []
+2022-12-01 06:47:05,985 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:05,986 INFO S.Server [main] Request: success: true; content: 
+2022-12-01 06:47:08,283 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:08,283 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:47:08,285 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:08,285 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:47:09,793 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:09,793 INFO S.Server [main] Request: command: info; args: []
+2022-12-01 06:47:09,795 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:09,795 INFO S.Server [main] Request: success: true; content: Type of collection: class java...
+2022-12-01 06:47:13,757 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:13,757 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:47:13,759 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:13,759 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:47:16,827 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:16,828 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:47:16,828 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:16,828 INFO S.Server [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 06:47:32,874 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:32,874 INFO S.Server [main] Request: command: filter_greater_than_nationality; args: [RUSSIA]
+2022-12-01 06:47:32,877 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:32,877 INFO S.Server [main] Request: success: true; content: Collection is empty 
+2022-12-01 06:47:42,666 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:42,666 INFO S.Server [main] Request: command: filter_greater_than_nationality; args: [VATICAN]
+2022-12-01 06:47:42,667 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:42,667 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:47:48,483 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:48,483 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:47:48,484 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:48,484 INFO S.Server [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 06:47:53,513 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:47:53,513 INFO S.Server [main] Request: command: info; args: []
+2022-12-01 06:47:53,514 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:47:53,514 INFO S.Server [main] Request: success: true; content: Type of collection: class java...
+2022-12-01 06:48:01,599 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:48:01,600 INFO S.Server [main] Request: command: print_descending; args: []
+2022-12-01 06:48:01,602 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:48:01,603 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 8...
+2022-12-01 06:49:10,232 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:50:56,643 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:51:05,432 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:51:05,433 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:51:05,434 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:51:05,435 INFO S.Server [main] Request: success: true; content: Collection is empty 
+2022-12-01 06:51:24,166 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:51:24,166 INFO S.Server [main] Request: command: add; args: []
+2022-12-01 06:51:24,169 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:51:24,170 INFO S.Server [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 06:51:50,996 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:51:50,997 INFO S.Server [main] Request: command: add; args: []
+2022-12-01 06:51:50,997 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:51:50,997 INFO S.Server [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 06:51:53,679 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:51:53,680 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:51:53,693 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:51:53,694 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 9...
+2022-12-01 06:52:08,291 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:52:08,291 INFO S.Server [main] Request: command: print_descending; args: []
+2022-12-01 06:52:08,294 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:52:08,294 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 6...
+2022-12-01 06:52:14,408 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:52:14,408 INFO S.Server [main] Request: command: help; args: []
+2022-12-01 06:52:14,409 INFO S.Server [main] Request was sent to address /127.0.0.1:60224
+2022-12-01 06:52:14,409 INFO S.Server [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 06:52:28,421 INFO S.Server [main] Received new request from /127.0.0.1:60224
+2022-12-01 06:52:28,422 INFO S.Server [main] Request: command: print_field_descending_location; args: []
+2022-12-01 06:55:40,119 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:56:04,708 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:56:04,709 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:56:04,711 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:56:04,712 INFO S.Server [main] Request: success: true; content: Collection is empty 
+2022-12-01 06:57:40,669 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:57:40,669 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:57:40,670 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:57:40,670 INFO S.Server [main] Request: success: true; content: Collection is empty 
+2022-12-01 06:57:57,281 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:57:57,282 INFO S.Server [main] Request: command: add; args: []
+2022-12-01 06:57:57,285 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:57:57,286 INFO S.Server [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 06:57:59,366 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:57:59,366 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:57:59,383 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:57:59,383 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 4...
+2022-12-01 06:58:29,441 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:58:29,442 INFO S.Server [main] Request: command: update; args: [4241898114596132864]
+2022-12-01 06:58:29,443 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:58:29,444 INFO S.Server [main] Request: success: true; content: 
+2022-12-01 06:58:32,965 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:58:32,965 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:58:32,967 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:58:32,967 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 4...
+2022-12-01 06:59:14,418 INFO S.Server [main] Server started on port 9000
+2022-12-01 06:59:17,174 INFO S.Server [main] Received new request from /127.0.0.1:53325
+2022-12-01 06:59:17,174 INFO S.Server [main] Request: command: show; args: []
+2022-12-01 06:59:17,191 INFO S.Server [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 06:59:17,192 INFO S.Server [main] Request: success: true; content: Elements in collection:  ID: 4...
+2022-12-01 06:59:26,862 INFO S.Server [main] Server started on port 9000
+2022-12-01 07:06:43,417 INFO info [main] Server started on port 9000
+2022-12-01 07:12:10,654 INFO info [main] Server started on port 9000
+2022-12-01 07:13:02,682 INFO info [main] Server started on port 9000
+2022-12-01 07:14:07,180 INFO info [main] Server started on port 9000
+2022-12-01 07:14:59,949 INFO info [main] Server started on port 9000
+2022-12-01 07:19:21,257 INFO info [main] Server started on port 9000
+2022-12-01 07:19:39,236 INFO info [main] Server started on port 9000
+2022-12-01 07:19:44,291 INFO info [main] Received new request from /127.0.0.1:53325
+2022-12-01 07:19:44,292 INFO info [main] Request: command: show; args: []
+2022-12-01 07:19:44,309 INFO info [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 07:19:44,310 INFO info [main] Request: success: true; content: Elements in collection:  ID: 4...
+2022-12-01 07:20:03,439 INFO info [main] Received new request from /127.0.0.1:53325
+2022-12-01 07:20:03,439 INFO info [main] Request: command: help; args: []
+2022-12-01 07:20:03,439 INFO info [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 07:20:03,439 INFO info [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 07:20:08,694 INFO info [main] Received new request from /127.0.0.1:53325
+2022-12-01 07:20:08,695 INFO info [main] Request: command: clear; args: []
+2022-12-01 07:20:08,695 INFO info [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 07:20:08,695 INFO info [main] Request: success: true; content: 
+2022-12-01 07:20:10,254 INFO info [main] Received new request from /127.0.0.1:53325
+2022-12-01 07:20:10,254 INFO info [main] Request: command: show; args: []
+2022-12-01 07:20:10,255 INFO info [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 07:20:10,255 INFO info [main] Request: success: true; content: Collection is empty 
+2022-12-01 07:20:18,656 INFO info [main] Server started on port 9000
+2022-12-01 07:20:21,334 INFO info [main] Received new request from /127.0.0.1:53325
+2022-12-01 07:20:21,335 INFO info [main] Request: command: show; args: []
+2022-12-01 07:20:21,359 INFO info [main] Request was sent to address /127.0.0.1:53325
+2022-12-01 07:20:21,359 INFO info [main] Request: success: true; content: Elements in collection:  ID: 4...
+2022-12-01 07:29:49,819 INFO info [main] Received new request from /127.0.0.1:60755
+2022-12-01 07:29:49,819 INFO info [main] Request: command: add; args: []
+2022-12-01 07:29:49,830 INFO info [main] Request was sent to address /127.0.0.1:60755
+2022-12-01 07:29:49,831 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 07:29:49,849 INFO info [main] Received new request from /127.0.0.1:60755
+2022-12-01 07:29:49,849 INFO info [main] Request: command: clear; args: []
+2022-12-01 07:29:49,849 INFO info [main] Request was sent to address /127.0.0.1:60755
+2022-12-01 07:29:49,850 INFO info [main] Request: success: true; content: 
+2022-12-01 07:34:42,932 INFO info [main] Received new request from /127.0.0.1:55339
+2022-12-01 07:34:42,933 INFO info [main] Request: command: add; args: []
+2022-12-01 07:34:42,933 INFO info [main] Request was sent to address /127.0.0.1:55339
+2022-12-01 07:34:42,933 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-01 07:34:42,948 INFO info [main] Received new request from /127.0.0.1:55339
+2022-12-01 07:34:42,949 INFO info [main] Request: command: clear; args: []
+2022-12-01 07:34:42,949 INFO info [main] Request was sent to address /127.0.0.1:55339
+2022-12-01 07:34:42,949 INFO info [main] Request: success: true; content: 
+2022-12-01 07:37:13,272 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:37:13,272 INFO info [main] Request: command: help; args: []
+2022-12-01 07:37:13,272 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:37:13,272 INFO info [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 07:37:17,780 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:37:17,781 INFO info [main] Request: command: help; args: []
+2022-12-01 07:37:17,781 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:37:17,781 INFO info [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 07:38:41,016 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:38:41,016 INFO info [main] Request: command: reorder; args: []
+2022-12-01 07:38:41,016 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:38:41,017 INFO info [main] Request: success: true; content: 
+2022-12-01 07:38:43,746 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:38:43,746 INFO info [main] Request: command: show; args: []
+2022-12-01 07:38:43,747 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:38:43,747 INFO info [main] Request: success: true; content: Collection is empty 
+2022-12-01 07:39:05,876 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:39:05,877 INFO info [main] Request: command: add_if_min; args: []
+2022-12-01 07:39:05,880 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:39:05,881 INFO info [main] Request: success: true; content: 
+2022-12-01 07:40:57,491 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:40:57,492 INFO info [main] Request: command: add_if_min; args: []
+2022-12-01 07:40:57,492 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:40:57,492 INFO info [main] Request: success: false; content: 
+2022-12-01 07:41:00,957 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:41:00,957 INFO info [main] Request: command: help; args: []
+2022-12-01 07:41:00,957 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:41:00,957 INFO info [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 07:41:08,826 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:41:08,827 INFO info [main] Request: command: print_descending; args: []
+2022-12-01 07:41:08,829 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:41:08,830 INFO info [main] Request: success: true; content: Elements in collection:  ID: 7...
+2022-12-01 07:41:15,496 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:41:15,496 INFO info [main] Request: command: reorder; args: []
+2022-12-01 07:41:15,496 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:41:15,497 INFO info [main] Request: success: true; content: 
+2022-12-01 07:41:18,160 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:41:18,160 INFO info [main] Request: command: help; args: []
+2022-12-01 07:41:18,160 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:41:18,161 INFO info [main] Request: success: true; content: add - Type <add {element}> to ...
+2022-12-01 07:41:27,738 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:41:27,739 INFO info [main] Request: command: remove_by_id; args: [1]
+2022-12-01 07:41:27,740 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:41:27,740 INFO info [main] Request: success: false; content: Passed incorrect ID 
+2022-12-01 07:42:34,974 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:34,974 INFO info [main] Request: command: remove_at; args: [1]
+2022-12-01 07:42:34,975 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:34,976 INFO info [main] Request: success: false; content: Index out of bounds
+2022-12-01 07:42:37,802 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:37,803 INFO info [main] Request: command: remove_at; args: [-1]
+2022-12-01 07:42:37,803 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:37,803 INFO info [main] Request: success: false; content: Index must be non-negative
+2022-12-01 07:42:42,668 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:42,668 INFO info [main] Request: command: remove_at; args: [1]
+2022-12-01 07:42:42,669 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:42,669 INFO info [main] Request: success: false; content: Index out of bounds
+2022-12-01 07:42:45,839 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:45,840 INFO info [main] Request: command: remove_at; args: [fmadkhan]
+2022-12-01 07:42:45,840 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:45,840 INFO info [main] Request: success: false; content: Wrong index provided
+2022-12-01 07:42:48,840 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:48,840 INFO info [main] Request: command: remove_at; args: [0]
+2022-12-01 07:42:48,840 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:48,841 INFO info [main] Request: success: true; content: 
+2022-12-01 07:42:51,398 INFO info [main] Received new request from /127.0.0.1:62402
+2022-12-01 07:42:51,399 INFO info [main] Request: command: show; args: []
+2022-12-01 07:42:51,399 INFO info [main] Request was sent to address /127.0.0.1:62402
+2022-12-01 07:42:51,399 INFO info [main] Request: success: true; content: Collection is empty 
