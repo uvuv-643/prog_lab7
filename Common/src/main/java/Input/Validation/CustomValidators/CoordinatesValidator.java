@@ -8,6 +8,7 @@ import Input.Validation.Validator;
 public class CoordinatesValidator implements Validator {
 
     private final String COORDINATES_DELIMITER = " ";
+    private final int MAXIMUM_FLOAT_LENGTH = 18;
 
     @Override
     public ValidatedData<Coordinates> validate(String data) throws ValidationException {
@@ -21,6 +22,13 @@ public class CoordinatesValidator implements Validator {
         String xCoordinate = coordinates[0];
         String yCoordinate = coordinates[1];
         float x, y;
+
+        if (xCoordinate.length() > MAXIMUM_FLOAT_LENGTH) {
+            throw new ValidationException("Maximum size of xCoordinate exceeded");
+        }
+        if (yCoordinate.length() > MAXIMUM_FLOAT_LENGTH) {
+            throw new ValidationException("Maximum size of yCoordinate exceeded");
+        }
         try {
             x = Float.parseFloat(xCoordinate);
             y = Float.parseFloat(yCoordinate);

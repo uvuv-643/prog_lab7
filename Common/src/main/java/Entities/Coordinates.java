@@ -36,7 +36,7 @@ public class Coordinates implements Serializable {
     @Override
     public String toString() {
         String x = String.format("X: %.4f \n", this.x);
-        String y = String.format("Y: %.4f \n", this.y);
+        String y = String.format("Y: %.4f ", this.y);
         return x + y;
     }
 

@@ -7,6 +7,7 @@ import javax.sound.midi.Receiver;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Person implements Comparable<Person>, Serializable {
 
@@ -154,7 +155,7 @@ public class Person implements Comparable<Person>, Serializable {
         String id = String.format("ID: %s\n", this.id);
         String name = String.format("Name: %s\n", this.name);
         String coordinates = String.format("Coordinates: %s\n", this.coordinates);
-        String createdAt = String.format("Created at: %s\n", this.creationDate);
+        String createdAt = String.format("Created at: %s\n", this.creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy - HH:mm:ss")));
         String height = String.format("Height: %s\n", this.height);
         String weight = String.format("Weight: %s\n", this.weight);
 
@@ -162,19 +163,19 @@ public class Person implements Comparable<Person>, Serializable {
         if (this.eyeColor != null) {
             eyeColor = String.format("Eye color: %s\n", this.eyeColor);
         } else {
-            eyeColor = "Eye color is not specified";
+            eyeColor = "Eye color is not specified\n";
         }
 
         String nationality;
         if (this.nationality != null) {
             nationality = String.format("Nationality: %s\n", this.nationality);
         } else {
-            nationality = "Nationality is not specified";
+            nationality = "Nationality is not specified\n";
         }
 
         String location;
         if (this.location != null) {
-            location = String.format("Location: %s\n", this.location);
+            location = String.format("Location: %s", this.location);
         } else {
             location = "Location is not specified";
         }

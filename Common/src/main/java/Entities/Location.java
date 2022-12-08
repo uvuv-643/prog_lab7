@@ -44,9 +44,9 @@ public class Location implements Serializable {
 
     @Override
     public String toString() {
-        String x = String.format("X: %.4f \n", this.x);
+        String x = String.format("X: %.4f, ", this.x);
         String y = String.format("Y: %d \n", this.y);
-        String locationName = String.format("Location name: %s \n", this.name);
+        String locationName = String.format("Location name: %s", this.name);
         return x + y + locationName;
     }
 

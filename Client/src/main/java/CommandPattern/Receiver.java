@@ -2,6 +2,7 @@ package CommandPattern;
 
 import App.Client;
 import Entities.Person;
+import Exceptions.ExecuteScriptException;
 import Input.InputManager;
 import Services.Request;
 import App.Terminal;
@@ -56,8 +57,11 @@ public class Receiver {
         try {
             Terminal terminal = new Terminal(invoker, client);
             terminal.startFile(filename);
+            return Optional.empty();
         } catch (FileNotFoundException exception) {
-            System.out.println("File was not found. Cannot execute script");
+            System.out.println("File was not found or you have no access. Cannot execute script");
+        } catch (ExecuteScriptException exception) {
+            System.out.println(exception.getMessage());
         }
         return Optional.empty();
     }

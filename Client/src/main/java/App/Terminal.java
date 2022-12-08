@@ -1,6 +1,8 @@
 package App;
 
 import CommandPattern.Invoker;
+import Exceptions.ExecuteCommandException;
+import Exceptions.ExecuteScriptException;
 import Services.Request;
 import Services.Response;
 
@@ -19,19 +21,24 @@ public class Terminal {
         this.client = client;
     }
 
-    public void startFile(String filename) throws FileNotFoundException {
+    public void startFile(String filename) throws FileNotFoundException, ExecuteScriptException {
         String pathToFile = new File(filename).getAbsolutePath();
+        if (this.invoker.isExecutedScript(filename)) {
+            throw new ExecuteScriptException("Infinite recursion. Stopped executing scripts");
+        }
+        this.invoker.addExecutedScript(filename);
         File file = new File(pathToFile);
         this.scanner = new Scanner(file);
-        while (scanner.hasNextLine()) {
-            String commandLine = scanner.nextLine();
-            try {
+        try {
+            while (scanner.hasNextLine()) {
+                String commandLine = scanner.nextLine();
                 lineHandler(commandLine);
-            } catch (NullPointerException e) {
-                System.out.println("There is an incorrect command in file. The execution is interrupted");
             }
+            System.out.println("File " + filename + " was executed");
+        } catch (ExecuteCommandException e) {
+            System.out.println("There is an incorrect command in file " + filename + ". The execution is interrupted");
         }
-        System.out.println("File was executed");
+
     }
 
     public void startKeyboard() {
@@ -42,36 +49,45 @@ public class Terminal {
             String commandLine = scanner.nextLine();
             try {
                 lineHandler(commandLine);
-            } catch (NullPointerException e) {
+            } catch (ExecuteCommandException e) {
                 System.out.println("There is no such command");
             }
         }
     }
 
-    protected void lineHandler(String line) throws NullPointerException {
+    protected void lineHandler(String line) throws ExecuteCommandException {
         String[] commandLine = line.replaceAll("\s{2,}", " ").trim().split("\s");
+        if (commandLine.length == 0) {
+            throw new ExecuteCommandException("Given empty command");
+        }
         String command = commandLine[0].trim();
         Optional<Request> lineHandlerResult = invoker.execute(command, Arrays.copyOfRange(commandLine, 1, commandLine.length));
-        System.out.println("Executing <" + command + ">...");
         if (lineHandlerResult.isPresent()) {
+            System.out.println("Executing <" + command + ">...");
             Request request = lineHandlerResult.get();
             client.send(request);
             Optional<Response> receiveResult = client.receive();
             if (receiveResult.isPresent()) {
                 Response response = receiveResult.get();
                 String responseMessage = response.getMessage();
-                System.out.println(Objects.requireNonNullElse(responseMessage, "Deserialization error"));
+                if (responseMessage == null) {
+                    System.out.println("Deserialization error");
+                } else if (!responseMessage.isEmpty()) {
+                    System.out.println(responseMessage);
+                }
                 if (response.isSuccess()) {
                     System.out.println("Command was executed successfully");
                 } else {
                     System.out.println("Command wasn't executed");
                 }
             } else {
-                System.out.println("Lost connection with server.");
+                System.out.println("Lost connection with server");
                 System.exit(-1);
             }
         } else {
-            System.out.println("Command cannot be executed");
+            if (!command.equals("execute_script")) {
+                System.out.println("Command <" + command + "> cannot be executed");
+            }
         }
     }
 

@@ -23,7 +23,7 @@ public class Save implements Command {
         if (request.getArgs().length == 0) {
             return receiver.save();
         } else {
-            return Optional.of(new Response(false, "Command <save> is used without arguments"));
+            return Optional.of(new Response(false, "Command <save> is unavailable"));
         }
     }
 

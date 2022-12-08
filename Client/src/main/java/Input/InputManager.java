@@ -113,9 +113,19 @@ public class InputManager {
         Coordinates coordinates = this.inputPersonCoordinates();
         int height = this.inputPersonHeight();
         float weight = this.inputPersonWeight();
-        Color eyeColor = this.inputPersonEyeColor().get();
-        Country nationality = this.inputPersonNationality().get();
-        Location location = this.inputPersonLocation().get();
+        Color eyeColor = null; Country nationality = null; Location location = null;
+        Optional<Color> eyeColorRaw = this.inputPersonEyeColor();
+        Optional<Country> nationalityRaw = this.inputPersonNationality();
+        Optional<Location> locationRaw = this.inputPersonLocation();
+        if (eyeColorRaw.isPresent()) {
+            eyeColor = eyeColorRaw.get();
+        }
+        if (nationalityRaw.isPresent()) {
+            nationality = nationalityRaw.get();
+        }
+        if (locationRaw.isPresent()) {
+            location = locationRaw.get();
+        }
         return Person.personCreator(name, coordinates, height, weight, eyeColor, nationality, location);
     }
 

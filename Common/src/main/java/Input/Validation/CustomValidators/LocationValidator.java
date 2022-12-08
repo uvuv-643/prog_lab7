@@ -13,6 +13,7 @@ import java.util.stream.IntStream;
 public class LocationValidator implements Validator {
 
     private final String LOCATION_DELIMITER = " ";
+    private final int MAXIMUM_FLOAT_LENGTH = 18;
 
     // TODO: command to enum
 
@@ -32,7 +33,7 @@ public class LocationValidator implements Validator {
 
     @Override
     public ValidatedData<Optional<Location>> validate(String data) throws ValidationException {
-        if (data == null || data.equals(" ")) {
+        if (data == null || data.isEmpty()) {
             return new ValidatedData<>(Optional.empty());
         }
         String[] location = this.parseLocationStringToArray(data);
@@ -41,8 +42,8 @@ public class LocationValidator implements Validator {
         }
         String xCoordinate = location[0];
         String yCoordinate = location[1];
-        if (xCoordinate.length() > 20) {
-            throw new ValidationException("Maximum size of X coordinate exceeded");
+        if (xCoordinate.length() > MAXIMUM_FLOAT_LENGTH) {
+            throw new ValidationException("Maximum size of yCoordinate exceeded");
         }
         String locationName = location[2];
         double x; int y;
@@ -63,6 +64,7 @@ public class LocationValidator implements Validator {
     }
 
     public ValidatedData<Location> validate(Location data) throws ValidationException {
+        if (data == null) return new ValidatedData<>(null);
         String name = data.getName();
         if (name == null) {
             throw new ValidationException("Location name cannot be null");

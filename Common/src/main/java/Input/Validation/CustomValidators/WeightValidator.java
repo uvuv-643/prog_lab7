@@ -6,6 +6,8 @@ import Input.Validation.Validator;
 
 public class WeightValidator implements Validator {
 
+    private final int MAXIMUM_FLOAT_LENGTH = 18;
+
     @Override
     public ValidatedData<Float> validate(String data) throws ValidationException {
         if (data == null) {
@@ -13,6 +15,9 @@ public class WeightValidator implements Validator {
         }
         data = data.trim();
         float weight;
+        if (data.length() > MAXIMUM_FLOAT_LENGTH) {
+            throw new ValidationException("Maximum size of weight exceeded");
+        }
         try {
             weight = Float.parseFloat(data);
             if (weight <= 0) {

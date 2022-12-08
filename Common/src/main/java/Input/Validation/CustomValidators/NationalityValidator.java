@@ -13,12 +13,12 @@ public class NationalityValidator implements Validator {
     public ValidatedData<Optional<Country>> validate(String data) throws ValidationException {
         if (data != null) {
             data = data.trim();
-            Optional<Country> nationality = switch (data) {
+            Optional<Country> nationality = switch (data.toLowerCase()) {
                 case "" -> Optional.empty();
-                case "RUSSIA" -> Optional.of(Country.RUSSIA);
-                case "CHINA" -> Optional.of(Country.CHINA);
-                case "THAILAND" -> Optional.of(Country.THAILAND);
-                case "VATICAN" -> Optional.of(Country.VATICAN);
+                case "russia" -> Optional.of(Country.RUSSIA);
+                case "china" -> Optional.of(Country.CHINA);
+                case "thailand" -> Optional.of(Country.THAILAND);
+                case "vatican" -> Optional.of(Country.VATICAN);
                 default -> null;
             };
             if (nationality == null) {

@@ -11,9 +11,9 @@ public class OutputManager {
         if (collection.isEmpty()) {
             stringBuilder.append("Collection is empty").append("\n");
         } else {
-            stringBuilder.append("Elements in collection:").append("\n").append("\n");
+            stringBuilder.append("Elements in collection:").append("\n\n");
             for (Person person : collection) {
-                stringBuilder.append(person).append("\n");
+                stringBuilder.append(person).append("\n\n");
             }
         }
         return stringBuilder.toString();

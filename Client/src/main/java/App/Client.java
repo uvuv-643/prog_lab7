@@ -54,7 +54,7 @@ public class Client {
             objectOutputStream.writeObject(request);
             socket.send(new DatagramPacket(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.toByteArray().length, InetAddress.getByName("localhost"), PORT));
         } catch (IOException e) {
-            System.out.println("Sending error. Request cannot be sent" + e.getMessage());
+            System.out.println("Sending error. Request cannot be sent");
         }
     }
 

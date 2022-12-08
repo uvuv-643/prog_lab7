@@ -15,6 +15,7 @@ import Services.Response;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -39,9 +40,9 @@ public class Receiver {
 
     public Optional<Response> info() {
         String typeOfCollection = String.format("Type of collection: %s", collection.getClass());
-        String dateOfInitialization = String.format("Initialization date: %s", creationDate);
+        String dateOfInitialization = String.format("Initialization date: %s", creationDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy - HH:mm:ss")));
         String countOfElements = String.format("Elements in collection: %d", collection.size());
-        return Optional.of(new Response(true, typeOfCollection + "\n" + dateOfInitialization + "\n" + countOfElements + "\n"));
+        return Optional.of(new Response(true, typeOfCollection + "\n" + dateOfInitialization + "\n" + countOfElements));
     }
 
     public Optional<Response> show() {
@@ -55,10 +56,10 @@ public class Receiver {
             long generatedId = idGenerator.generate();
             Person personValidated = Person.personCreator(person, generatedId);
             collection.add(personValidated);
-            responseText.append("Successfully added element to collection.").append("\n");
+            responseText.append("Successfully added element to collection.");
             return Optional.of(new Response(true, responseText.toString()));
         } catch (ValidationException exception) {
-            responseText.append("Provided data is incorrect. ").append(exception.getMessage()).append("\n");
+            responseText.append("Provided data is incorrect. ").append(exception.getMessage());
             return Optional.of(new Response(false, responseText.toString()));
         }
     }
@@ -85,11 +86,11 @@ public class Receiver {
                 }
                 return Optional.of(new Response(true, responseText.toString()));
             } catch (ValidationException exception) {
-                responseText.append("Internal server error. ").append(exception.getMessage()).append("\n");
+                responseText.append("Internal server error. ").append(exception.getMessage());
                 return Optional.of(new Response(false, responseText.toString()));
             }
         } catch (ValidationException exception) {
-            responseText.append("Passed incorrect ID").append("\n");
+            responseText.append("Passed incorrect ID");
             return Optional.of(new Response(false, responseText.toString()));
         }
     }
@@ -109,11 +110,11 @@ public class Receiver {
                 }
                 return Optional.of(new Response(true, responseText.toString()));
             } catch (ValidationException exception) {
-                responseText.append("Internal server error. ").append(exception.getMessage()).append("\n");
+                responseText.append("Internal server error. ").append(exception.getMessage());
                 return Optional.of(new Response(false, responseText.toString()));
             }
         } catch (ValidationException exception) {
-            responseText.append("Passed incorrect ID").append("\n");
+            responseText.append("Passed incorrect ID");
             return Optional.of(new Response(false, responseText.toString()));
         }
     }
@@ -129,7 +130,7 @@ public class Receiver {
         try {
             worker.writeInFile(collection);
         } catch (IOException exception) {
-            responseText.append("Passed incorrect argument or you have no access to file").append("\n");
+            responseText.append("Passed incorrect argument or you have no access to file");
             return Optional.of(new Response(true, responseText.toString()));
         }
         return Optional.of(new Response(true, "Data was saved into the file"));
@@ -179,8 +180,12 @@ public class Receiver {
     }
 
     public Optional<Response> reorder() {
-        Collections.reverse(collection);
-        return Optional.of(new Response(true, ""));
+        if (collection.size() > 0) {
+            Collections.reverse(collection);
+            return Optional.of(new Response(true, ""));
+        } else {
+            return Optional.of(new Response(false, "Collection is empty"));
+        }
     }
 
     public Optional<Response> filterGreaterThanNationality(String nationalityRaw) {
@@ -199,9 +204,8 @@ public class Receiver {
     }
 
     public Optional<Response> printDescending() {
-        ArrayList<Person> reversedCollection = new ArrayList<>(collection.stream().sorted().toList());
-        Collections.reverse(reversedCollection);
-        return Optional.of(new Response(true, outputManager.showCollection(reversedCollection)));
+        ArrayList<Person> sortedCollection = new ArrayList<>(collection.stream().sorted(Comparator.reverseOrder()).toList());
+        return Optional.of(new Response(true, outputManager.showCollection(sortedCollection)));
     }
 
     public Optional<Response> printFieldDescendingOrder() {
@@ -210,9 +214,9 @@ public class Receiver {
         if (countries.length == 0) {
             responseText.append("Collection in empty");
         } else {
-            responseText.append("Field <Location> in collection: ");
+            responseText.append("Field <Location> in collection: ").append("\n");
             for (Country country : countries) {
-                responseText.append(country);
+                responseText.append(country).append("\n");
             }
         }
         return Optional.of(new Response(true, responseText.toString()));

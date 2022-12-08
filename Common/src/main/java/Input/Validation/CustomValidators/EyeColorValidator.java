@@ -13,11 +13,11 @@ public class EyeColorValidator implements Validator {
     public ValidatedData<Optional<Color>> validate(String data) throws ValidationException {
         if (data != null) {
             data = data.trim();
-            Optional<Color> color = switch (data) {
+            Optional<Color> color = switch (data.toLowerCase()) {
                 case "" -> Optional.empty();
-                case "BLACK" -> Optional.of(Color.BLACK);
-                case "BLUE" -> Optional.of(Color.BLUE);
-                case "YELLOW" -> Optional.of(Color.YELLOW);
+                case "black" -> Optional.of(Color.BLACK);
+                case "blue" -> Optional.of(Color.BLUE);
+                case "yellow" -> Optional.of(Color.YELLOW);
                 default -> null;
             };
             if (color == null) {

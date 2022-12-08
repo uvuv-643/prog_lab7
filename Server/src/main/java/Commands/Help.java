@@ -19,7 +19,7 @@ public class Help implements Command {
         if (request.getArgs().length == 0) {
             StringBuilder helpResult = new StringBuilder();
             for (CommandName commandName : CommandName.values()) {
-                helpResult.append(commandName).append(" - ");
+                helpResult.append(String.format("%-55s - ", commandName));
                 helpResult.append(invoker.getCommandMap().get(commandName.toString()).getHelp()).append("\n");
             }
             return Optional.of(new Response(true, helpResult.toString()));
