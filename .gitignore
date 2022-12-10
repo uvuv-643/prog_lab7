@@ -3,10 +3,14 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-./out
-./target
+
 
 ### IntelliJ IDEA ###
+/out
+/target
+/.idea
+logs
+script*
 ./idea
 .idea/modules.xml
 .idea/jarRepositories.xml
