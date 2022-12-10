@@ -4,13 +4,13 @@ import CommandPattern.Invoker;
 import CommandPattern.Receiver;
 import Entities.Person;
 import Input.FileManager.FileManager;
-import Server.Server;
 import Services.Request;
 import Services.Response;
 import com.google.gson.JsonParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -36,34 +36,32 @@ public class Main {
         Invoker invoker = new Invoker(receiver);
         Server server = new Server();
 
-        while (true) {
-            if (System.in.available() > 0) {
-                String serverInteractiveCommand;
-                Scanner in = new Scanner(System.in);
-                try {
-                    serverInteractiveCommand = in.nextLine();
-                } catch (NullPointerException e) {
-                    return;
-                }
-                if (serverInteractiveCommand.equals("save") || serverInteractiveCommand.equals("exit")) {
-                    Request request = new Request(serverInteractiveCommand, new String[]{});
-                    Optional<Response> responseRaw = invoker.execute(request);
-                    responseRaw.ifPresentOrElse((response) -> {
+        try {
+            while (true) {
+                if (System.in.available() > 0) {
+                    String serverInteractiveCommand;
+                    Scanner in = new Scanner(System.in);
+                    try {
+                        serverInteractiveCommand = in.nextLine();
+                    } catch (NullPointerException e) {
+                        return;
+                    }
+                    if (serverInteractiveCommand.equals("save") || serverInteractiveCommand.equals("exit")) {
+                        Request request = new Request(serverInteractiveCommand, new String[]{});
+                        Response response = invoker.execute(request);
                         System.out.println(response.getMessage());
-                    }, () -> {
-                        System.out.println("Cannot execute command");
-                    });
-                } else {
-                    System.out.println("Cannot execute this command. Server able to execute only <save> and <exit>");
+                    } else {
+                        System.out.println("Cannot execute this command. Server able to execute only <save> and <exit>");
+                    }
+                }
+
+                Optional<Request> request = server.receive();
+                if (request.isPresent()) {
+                    Response response = invoker.execute(request.get());
+                    server.send(response, request.get().getClientAddress());
                 }
             }
-
-            Optional<Request> request = server.receive();
-            if (request.isPresent()) {
-                Optional<Response> response = invoker.execute(request.get());
-                response.ifPresent(responseValue -> server.send(responseValue, request.get().getClientAddress()));
-            }
-        }
+        } catch (NoSuchElementException ignored) { }
     }
 
 }

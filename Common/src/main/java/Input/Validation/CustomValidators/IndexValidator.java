@@ -4,6 +4,11 @@ import Exceptions.ValidationException;
 import Input.Validation.ValidatedData;
 import Input.Validation.Validator;
 
+/**
+ * Валидатор для индексов
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class IndexValidator implements Validator {
 
     @Override

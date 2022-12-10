@@ -14,11 +14,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Класс, предназначенный для управления сохранением информации в файл
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class FileManager {
 
+    /** Путь к файлу, хранящему коллекцию - переменная среды окружения path */
     final String path = System.getenv("path");
+
+    /** объект для работы с форматом JSON */
     Gson gson;
 
+    /**
+     * Конструктор класса управления работы с файлами
+     */
     public FileManager() {
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(ZonedDateTime.class, new TimeAdapter());
@@ -26,9 +37,12 @@ public class FileManager {
     }
 
     /**
-     * filling the collection by environment variable
+     * Прочитать информацию с файла в коллекцию
+     * @return ArrayList - коллекция, прочитанная из файла
+     * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
+     * @throws NullPointerException - выбрасывается в случае проблем с обработкой JSON
      */
-    public ArrayList<Person> readFromFile() throws IOException, NullPointerException {
+    public ArrayList<Person> readFromFile() throws IOException {
         Scanner scanner = new Scanner(new File(path));
         StringBuilder fileData = new StringBuilder();
         while (scanner.hasNextLine()) {
@@ -44,6 +58,11 @@ public class FileManager {
         return collection;
     }
 
+    /**
+     * Записать в файл коллекцию
+     * @param collection - коллекция, которую необходимо записать
+     * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
+     */
     public void writeInFile(ArrayList<Person> collection) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter(path));
         String data = gson.toJson(collection.toArray(Person[]::new));

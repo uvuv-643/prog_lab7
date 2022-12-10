@@ -7,6 +7,11 @@ import Input.Validation.Validator;
 
 import java.util.ArrayList;
 
+/**
+ * Валидатор для поля Person - ID
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class IDValidator implements Validator {
 
     @Override
@@ -27,6 +32,13 @@ public class IDValidator implements Validator {
         return new ValidatedData<>(id);
     }
 
+    /**
+     * Проверяет, является ли указанный ID уникальным на коллекции элементов
+     * @param Id - проверяемый ID
+     * @param collection - коллекция, над которой осуществляется проверка
+     * @return Long - ID
+     * @throws ValidationException - выбрасывается, если ID не является уникальным
+     */
     public ValidatedData<Long> validateUnique(Long Id, ArrayList<Person> collection) throws ValidationException {
         boolean isUnique = collection.stream().noneMatch((element) -> element.getId().equals(Id));
         if (isUnique) {
@@ -35,6 +47,13 @@ public class IDValidator implements Validator {
         throw new ValidationException("ID is not unique");
     }
 
+    /**
+     * Проверяет, является ли указанный ID неуникальным на коллекции элементов
+     * @param Id - проверяемый ID
+     * @param collection - коллекция, над которой осуществляется проверка
+     * @return Long - ID
+     * @throws ValidationException - выбрасывается, если ID является уникальным
+     */
     public ValidatedData<Long> validateNotUnique(Long Id, ArrayList<Person> collection) throws ValidationException {
         boolean isUnique = collection.stream().noneMatch((element) -> element.getId().equals(Id));
         if (isUnique) {

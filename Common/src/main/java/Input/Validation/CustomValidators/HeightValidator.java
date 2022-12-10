@@ -4,6 +4,11 @@ import Exceptions.ValidationException;
 import Input.Validation.ValidatedData;
 import Input.Validation.Validator;
 
+/**
+ * Валидатор для поля Person - Height
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class HeightValidator implements Validator {
 
     @Override

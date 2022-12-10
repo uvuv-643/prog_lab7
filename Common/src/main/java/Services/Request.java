@@ -7,14 +7,27 @@ import java.io.Serializable;
 import java.net.SocketAddress;
 import java.util.Arrays;
 
+/**
+ * Общий класс для всех запросов, отправляемых клиентом на сервер.
+ * Поддерживает сериализацию
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class Request implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 666777666L;
 
+    /** Название команды к исполнению */
     private String commandName;
+
+    /** Аргументы команды к исполнению */
     private String[] args;
+
+    /** Поле, которое может быть null, передаётся в случае, если необходимо добавить / обновить элемент */
     private Person person;
+
+    /** Адрес клиента, совершающего запрос */
     private SocketAddress clientAddress;
 
     public Request(String commandName, String[] args, Person person) {

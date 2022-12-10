@@ -5,6 +5,11 @@ import Exceptions.ValidationException;
 import Input.Validation.ValidatedData;
 import Input.Validation.Validator;
 
+/**
+ * Валидатор для поля Person - Coordinates
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class CoordinatesValidator implements Validator {
 
     private final String COORDINATES_DELIMITER = " ";

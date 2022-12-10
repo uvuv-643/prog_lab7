@@ -9,6 +9,10 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author se.ifmo.ru
+ * @version 1.0
+ */
 public class Person implements Comparable<Person>, Serializable {
 
     @Serial

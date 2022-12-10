@@ -3,11 +3,9 @@ package Commands;
 import CommandPattern.Command;
 import CommandPattern.Invoker;
 import CommandPattern.Receiver;
-import Entities.Person;
 import Services.Request;
 import Services.Response;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class ExecuteScript implements Command {
@@ -19,8 +17,8 @@ public class ExecuteScript implements Command {
     }
 
     @Override
-    public Optional<Response> execute(Request request, Invoker invoker) {
-        return Optional.of(new Response(false, "Command <execute_script> is unavailable"));
+    public Response execute(Request request, Invoker invoker) {
+        return new Response(false, "Command <execute_script> is unavailable");
     }
 
     @Override

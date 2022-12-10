@@ -3,11 +3,9 @@ package Commands;
 import CommandPattern.Command;
 import CommandPattern.Invoker;
 import CommandPattern.Receiver;
-import Entities.Person;
 import Services.Request;
 import Services.Response;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class PrintDescending implements Command {
@@ -19,11 +17,11 @@ public class PrintDescending implements Command {
     }
 
     @Override
-    public Optional<Response> execute(Request request, Invoker invoker) {
+    public Response execute(Request request, Invoker invoker) {
         if (request.getArgs().length == 0) {
             return receiver.printDescending();
         } else {
-            return Optional.of(new Response(false, "Command <print_descending> is used without arguments"));
+            return new Response(false, "Command <print_descending> is used without arguments");
         }
     }
 

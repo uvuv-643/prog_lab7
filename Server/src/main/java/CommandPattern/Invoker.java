@@ -2,6 +2,7 @@ package CommandPattern;
 
 import Commands.*;
 import Entities.Person;
+import Exceptions.ExecuteCommandException;
 import Services.Request;
 import Services.Response;
 
@@ -9,14 +10,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
 
+/**
+ * Класс, предназначенный для вызова определенной команды
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class Invoker {
 
+    /** Сопоставление название_команды => класс_комманды */
     private final HashMap<String, Command> commandMap = new HashMap<>();
 
+    /** Создать сопоставление название_команды => класс_комманды
+     * @param commandName - название команды
+     * @param command - класс команды
+     */
     public void register(String commandName, Command command) {
         commandMap.put(commandName, command);
     }
 
+    /**
+     * Создание объекта вызова команд, регистрация всех команд программы
+     * @param receiver - исполнитель команд
+     * @see Receiver
+     */
     public Invoker(Receiver receiver) {
         this.register(String.valueOf(CommandName.ADD), new Add(receiver));
         this.register(String.valueOf(CommandName.ADD_IF_MIN), new AddIfMin(receiver));
@@ -36,14 +52,25 @@ public class Invoker {
         this.register(String.valueOf(CommandName.UPDATE), new Update(receiver));
     }
 
-    public Optional<Response> execute(Request request) {
+    /**
+     * Вызов команды
+     * @param request - запрос, поступивший с клиента на исполнение
+     * @return Response - ответ клиенту на основании выполнения команды
+     * @see Request
+     * @see Response
+     */
+    public Response execute(Request request) {
         Command command = commandMap.get(request.getCommandName());
         if (command == null) {
-            return Optional.of(new Response(false, "There is no such command"));
+            return new Response(false, "There is no such command");
         }
         return command.execute(request, this);
     }
 
+    /**
+     * getter для Map commandMap
+     * @return HashMap
+     */
     public HashMap<String, Command> getCommandMap() {
         return this.commandMap;
     }

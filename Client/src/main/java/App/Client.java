@@ -8,19 +8,37 @@ import java.util.Optional;
 import Services.Request;
 import Services.Response;
 
+/**
+ * Класс, определяющий сущность клиента и осуществляющий отправку запросов и получение ответов на них.
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class Client {
 
+    /** Порт сервера, на который отправляются все запросы */
     private static final int PORT = 9000;
+
+    /** Размер буффера для сериализации / десериализации данных */
     private static final int BUF_SIZE = 32768;
+
+    /** Количество милисекунд, в течение который должен поступить ответ сервера */
+    private static final int CLIENT_SOCKET_INVALID_TIMEOUT = 5000;
+
+    /** Сокет датаграмм для отправки запросов и получения ответов */
     private DatagramSocket socket;
-    private DatagramPacket packet;
+
+    /** Адрес сервера, на который отправляются все запросы */
     private InetAddress host;
 
+    /**
+     * Инициализация объекта Client по умолчанию.
+     * Создание сокета датаграмм, инициализация адреса сервера
+     */
     public Client() {
         try {
-            host = InetAddress.getByName("localhost");
+            host = InetAddress.getLocalHost();
             socket = new DatagramSocket();
-            socket.setSoTimeout(5000);
+            socket.setSoTimeout(CLIENT_SOCKET_INVALID_TIMEOUT);
             System.out.println("Client start working");
         } catch (SocketException e) {
             System.out.println("Connection error");
@@ -31,10 +49,15 @@ public class Client {
         }
     }
 
+    /**
+     * Получить ответ от сервера на отправленный ранее запрос
+     * @return Response - ответ сервера на запрос, может быть null
+     * @see Response
+     */
     public Optional<Response> receive() {
         try {
             ByteBuffer buffer = ByteBuffer.allocate(BUF_SIZE);
-            packet = new DatagramPacket(buffer.array(), buffer.array().length);
+            DatagramPacket packet = new DatagramPacket(buffer.array(), buffer.array().length);
             socket.receive(packet);
             ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(buffer.array()));
             return Optional.of((Response)objectInputStream.readObject());
@@ -47,12 +70,16 @@ public class Client {
         }
     }
 
+    /**
+     * Отправление запроса на сервер
+     * @param request - запрос, отправляемый на сервер
+     */
     public void send(Request request) {
         try {
             ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(request);
-            socket.send(new DatagramPacket(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.toByteArray().length, InetAddress.getByName("localhost"), PORT));
+            socket.send(new DatagramPacket(byteArrayOutputStream.toByteArray(), byteArrayOutputStream.toByteArray().length, host, PORT));
         } catch (IOException e) {
             System.out.println("Sending error. Request cannot be sent");
         }

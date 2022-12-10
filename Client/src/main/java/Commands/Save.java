@@ -3,10 +3,8 @@ package Commands;
 import CommandPattern.Command;
 import CommandPattern.Invoker;
 import CommandPattern.Receiver;
-import Entities.Person;
 import Services.Request;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class Save implements Command {
@@ -25,11 +23,6 @@ public class Save implements Command {
             System.out.println("Command <save> is used without arguments");
             return Optional.empty();
         }
-    }
-
-    @Override
-    public String getHelp() {
-        return "Type <save> to save collection in file (env path)";
     }
 
 }

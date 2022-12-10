@@ -4,8 +4,18 @@ import Entities.Person;
 
 import java.util.ArrayList;
 
+/**
+ * Класс для вывода информации клиенту с сервера
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class OutputManager {
 
+    /**
+     * Обработать коллекцию и представить её в текстовом виде
+     * @param collection - исходная коллекция
+     * @return String - текстовое представление коллекции
+     */
     public String showCollection(ArrayList<Person> collection) {
         StringBuilder stringBuilder = new StringBuilder();
         if (collection.isEmpty()) {

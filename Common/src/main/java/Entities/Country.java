@@ -1,10 +1,14 @@
 package Entities;
 
+/**
+ * @author se.ifmo.ru
+ * @version 1.0
+ */
 public enum Country {
-    RUSSIA(14400000),
-    CHINA(1500000000),
     VATICAN(825),
-    THAILAND(70000000);
+    THAILAND(70000000),
+    RUSSIA(144000000),
+    CHINA(1500000000);
 
     private long population;
 
@@ -13,11 +17,10 @@ public enum Country {
     }
 
     public long getPopulation() {
-        return this.population;
+        return population;
     }
 
     public void setPopulation(long population) {
         this.population = population;
     }
-
 }

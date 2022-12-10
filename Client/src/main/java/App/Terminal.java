@@ -10,17 +10,41 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+ /**
+ * Класс для осуществления взаимодействия с пользователем через файлы / стандартный ввод
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class Terminal {
 
+    /** Объект для ввода информации из стандартного потока / файла */
     Scanner scanner;
+
+    /**
+     * Invoker, предназначенный для запуска команд
+     * @see Invoker
+     */
     private final Invoker invoker;
+
+    /** Клиент, работающий в текущем терминале */
     private final Client client;
 
+     /**
+      * Инициализация терминала
+      * @param invoker - объект, вызывающий команды
+      * @param client
+      */
     public Terminal(Invoker invoker, Client client) {
         this.invoker = invoker;
         this.client = client;
     }
 
+     /**
+      * Прочитать файл и запустить все команды построчно, находящиеся в нём.
+      * @param filename - относительный путь к файлу
+      * @throws FileNotFoundException - файл не был найден
+      * @throws ExecuteScriptException - бесконечная рекурсия
+      */
     public void startFile(String filename) throws FileNotFoundException, ExecuteScriptException {
         String pathToFile = new File(filename).getAbsolutePath();
         if (this.invoker.isExecutedScript(filename)) {
@@ -41,6 +65,9 @@ public class Terminal {
 
     }
 
+     /**
+      * Начать взаимодействие с пользователем посредством стандартного потока ввода
+      */
     public void startKeyboard() {
         this.scanner = new Scanner(System.in);
         System.out.println("Hint: type help to get list of the commands");
@@ -48,6 +75,7 @@ public class Terminal {
             System.out.println("Enter command: ");
             String commandLine = scanner.nextLine();
             try {
+                invoker.clearScriptList();
                 lineHandler(commandLine);
             } catch (ExecuteCommandException e) {
                 System.out.println("There is no such command");
@@ -55,6 +83,11 @@ public class Terminal {
         }
     }
 
+     /**
+      * Обработать единичную команду
+      * @param line - строка, содержащая команду (возможно некорректную)
+      * @throws ExecuteCommandException - команда некорректна
+      */
     protected void lineHandler(String line) throws ExecuteCommandException {
         String[] commandLine = line.replaceAll("\s{2,}", " ").trim().split("\s");
         if (commandLine.length == 0) {

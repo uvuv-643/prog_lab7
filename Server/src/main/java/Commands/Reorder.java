@@ -17,11 +17,11 @@ public class Reorder implements Command {
     }
 
     @Override
-    public Optional<Response> execute(Request request, Invoker invoker) {
+    public Response execute(Request request, Invoker invoker) {
         if (request.getArgs().length == 0) {
             return receiver.reorder();
         } else {
-            return Optional.of(new Response(false, "Command <reorder> is used without arguments" + request.getArgs().length));
+            return new Response(false, "Command <reorder> is used without arguments" + request.getArgs().length);
         }
     }
 

@@ -7,9 +7,16 @@ import Input.Validation.CustomValidators.*;
 import java.util.Optional;
 import java.util.Scanner;
 
+/**
+ * Класс, осуществляющий ввод данных из стандартного потока
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class InputManager {
 
+    /** Объект для ввода данных из стандартного потока */
     private final Scanner scanner = new Scanner(System.in);
+
     private final NameValidator nameValidator = new NameValidator();
     private final CoordinatesValidator coordinatesValidator = new CoordinatesValidator();
     private final HeightValidator heightValidator = new HeightValidator();
@@ -18,6 +25,10 @@ public class InputManager {
     private final NationalityValidator nationalityValidator = new NationalityValidator();
     private final LocationValidator locationValidator = new LocationValidator();
 
+    /**
+     * Ввести имя пользователя из стандартного потока
+     * @return String - валидное пользовательское имя
+     */
     public String inputPersonName() {
         System.out.println("Input person name in the next line: ");
         String name = scanner.nextLine();
@@ -29,6 +40,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести координаты пользователя из стандартного потока
+     * @return Coordinates - валидные координаты
+     */
     public Coordinates inputPersonCoordinates() {
         System.out.println("Input coordinates (x, y) separated by space. Example: ");
         System.out.println("0.5 0.12");
@@ -41,6 +56,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести высоту пользователя из стандартного потока
+     * @return int - валидная высота
+     */
     public int inputPersonHeight() {
         System.out.println("Input height in the next line (integer): ");
         String height = scanner.nextLine();
@@ -52,6 +71,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести вес пользователя из стандартного потока
+     * @return float - валидный вес
+     */
     public float inputPersonWeight() {
         System.out.println("Input weight in the next line (float): ");
         String weight = scanner.nextLine();
@@ -63,6 +86,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести цвет глаз пользователя из стандартного потока
+     * @return Color - валидный цвет глаз (может быть null)
+     */
     public Optional<Color> inputPersonEyeColor() {
         System.out.println("Input person eye color from the following list:");
         Color[] colors = Color.values();
@@ -78,6 +105,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести страну пользователя из стандартного потока
+     * @return Country - валидная страна (может быть null)
+     */
     public Optional<Country> inputPersonNationality() {
         System.out.println("Input person nationality:");
         Country[] countries = Country.values();
@@ -93,6 +124,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести месторасположение пользователя из стандартного потока
+     * @return Location - валидное месторасположение (может быть null)
+     */
     public Optional<Location> inputPersonLocation() {
         System.out.println("Input person location in the following format:");
         System.out.println("X Y Location_Name");
@@ -108,6 +143,10 @@ public class InputManager {
         }
     }
 
+    /**
+     * Ввести из стандартного потока все данные о пользователе и создать объект класса Person
+     * @return Person - объект без полей id, created_at, готовый для отправки на сервер
+     */
     public Person inputPerson() {
         String name = this.inputPersonName();
         Coordinates coordinates = this.inputPersonCoordinates();

@@ -1,5 +1,10 @@
 package CommandPattern;
 
+/**
+ * enum, элементы которого представляют собой название команды
+ * @author uvuv-643
+ * @version 1.0
+ */
 public enum CommandName {
 
     ADD("add"),

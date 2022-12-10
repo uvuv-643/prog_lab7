@@ -7,6 +7,11 @@ import Input.Validation.Validator;
 
 import java.util.Optional;
 
+/**
+ * Валидатор для поля Person - Nationality
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class NationalityValidator implements Validator {
 
     @Override

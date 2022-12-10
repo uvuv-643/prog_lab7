@@ -11,19 +11,25 @@ import Services.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class Server {
     private static final Logger logger = LogManager.getLogger("info");
     private final int SERVICE_PORT = 9000;
 
+    /** Величина буффера для записи / чтения информации */
     private final int BUF_SIZE = 32768;
 
-
-    private byte[] inputData;
-
+    /** Канал датаграмм для обработки получения запросов и получения ответов */
     private DatagramChannel datagramChannel;
 
+    /**
+     * Инициализация объекта класса Server по умолчанию.
+     * Создание канала датаграмм, привязка его к порту
+     */
     public Server() {
-
         try {
             this.datagramChannel = DatagramChannel.open();
             this.datagramChannel.bind(new InetSocketAddress(SERVICE_PORT));
@@ -34,6 +40,11 @@ public class Server {
         }
     }
 
+    /**
+     * Сервер получает запрос от клиента, осуществляет его обработку
+     * @return Request - обработанный запрос, поступивший на сервер, может быть null
+     * @see Request
+     */
     public Optional<Request> receive() {
         try {
             ByteBuffer buffer = ByteBuffer.allocate(BUF_SIZE);
@@ -56,6 +67,12 @@ public class Server {
         }
     }
 
+    /**
+     * Сервер отправляет ответ клиенту по адресу clientAddress
+     * @param response - сформированный ответ, который отправляется клиенту
+     * @param clientAddress - адрес клиента
+     * @see Response
+     */
     public void send(Response response, SocketAddress clientAddress) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         try {

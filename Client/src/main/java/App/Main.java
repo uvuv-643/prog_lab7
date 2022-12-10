@@ -1,7 +1,7 @@
 package App;
 
-import CommandPattern.Receiver;
 import CommandPattern.Invoker;
+import CommandPattern.Receiver;
 
 import java.util.NoSuchElementException;
 

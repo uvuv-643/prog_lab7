@@ -3,11 +3,9 @@ package Commands;
 import CommandPattern.Command;
 import CommandPattern.Invoker;
 import CommandPattern.Receiver;
-import Entities.Person;
 import Services.Request;
 import Services.Response;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class Exit implements Command {
@@ -19,13 +17,13 @@ public class Exit implements Command {
     }
 
     @Override
-    public Optional<Response> execute(Request request, Invoker invoker) {
+    public Response execute(Request request, Invoker invoker) {
         if (request.getArgs().length == 0) {
             receiver.save();
             receiver.exit();
-            return Optional.empty();
+            return new Response(true, "");
         } else {
-            return Optional.of(new Response(false, "Command <exit> is used without arguments"));
+            return new Response(false, "Command <exit> is used without arguments");
         }
     }
 

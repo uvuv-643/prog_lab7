@@ -4,33 +4,83 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1815c747-810b-4f49-91e4-0a1737338a4a" name="Changes" comment="Added server, separated to files">
-      <change afterPath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteCommandException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteScriptException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/CommandName.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Invoker.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Server/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/script2" afterDir="false" />
+    <list default="true" id="1815c747-810b-4f49-91e4-0a1737338a4a" name="Changes" comment="Lab 6 done. Prepared for final testing.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/App/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/App/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/App/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/App/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/App/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/App/Terminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Invoker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/CommandPattern/Receiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/FilterGreaterThanNationality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/FilterGreaterThanNationality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/PrintDescending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/PrintDescending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/PrintFieldDescendingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/PrintFieldDescendingOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/RemoveAt.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/RemoveAt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/RemoveById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Reorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Reorder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/Commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Commands/Update.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Client/src/main/java/Input/InputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Client/src/main/java/Input/InputManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/CommandPattern/Command.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/CommandPattern/CommandName.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/CommandPattern/CommandName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/CommandPattern/Invoker.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Entities/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Entities/Color.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Entities/Coordinates.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Entities/Coordinates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Entities/Country.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Entities/Country.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Entities/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Entities/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Entities/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteCommandException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteCommandException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteScriptException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ExecuteScriptException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ValidationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Exceptions/ValidationException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/CoordinatesValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/CoordinatesValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/EyeColorValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/EyeColorValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/HeightValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/HeightValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/IDValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/IDValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/IndexValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/IndexValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/LocationValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/LocationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/NameValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/NameValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/NationalityValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/NationalityValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/WeightValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/CustomValidators/WeightValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/ValidatedData.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/ValidatedData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Input/Validation/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Services/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Services/Request.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/java/Services/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/java/Services/Response.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Common/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Common/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/CommandName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Invoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Invoker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/CommandPattern/Receiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Add.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Add.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/AddIfMin.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/AddIfMin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/ExecuteScript.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/ExecuteScript.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Exit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Exit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/FilterGreaterThanNationality.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/FilterGreaterThanNationality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Info.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/PrintDescending.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/PrintDescending.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/PrintFieldDescendingOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/PrintFieldDescendingOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/RemoveAt.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/RemoveAt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/RemoveById.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/RemoveById.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Reorder.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Reorder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Save.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Save.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Show.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Show.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Commands/Update.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Commands/Update.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Input/FileManager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Input/FileManager/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Input/Generators/Generator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Input/Generators/Generator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Input/Generators/IDGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Input/Generators/IDGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Server/src/main/java/Output/OutputManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Output/OutputManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Server/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Server/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/Server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/java/Server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/Server/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/log4j2.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/log4j2.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/client_jar/client.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/server_jar/server.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/server_jar/server.jar" afterDir="false" />
@@ -155,7 +205,11 @@
       <workItem from="1669792641935" duration="32017000" />
       <workItem from="1670194027917" duration="3599000" />
       <workItem from="1670351552243" duration="2880000" />
-      <workItem from="1670414329403" duration="12800000" />
+      <workItem from="1670414329403" duration="15849000" />
+      <workItem from="1670542876643" duration="600000" />
+      <workItem from="1670584439076" duration="61000" />
+      <workItem from="1670608319696" duration="589000" />
+      <workItem from="1670667398726" duration="10015000" />
     </task>
     <task id="LOCAL-00001" summary="Added server, separated to files">
       <created>1670197036719</created>
@@ -164,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670197036719</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Lab 6 done. Prepared for final testing.">
+      <created>1670518826277</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670518826277</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +244,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added server, separated to files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added server, separated to files" />
+    <MESSAGE value="Lab 6 done. Prepared for final testing." />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab 6 done. Prepared for final testing." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

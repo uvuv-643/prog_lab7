@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+/**
+ * Валидатор для поля Person - Location
+ * @author uvuv-643
+ * @version 1.0
+ */
 public class LocationValidator implements Validator {
 
     private final String LOCATION_DELIMITER = " ";
