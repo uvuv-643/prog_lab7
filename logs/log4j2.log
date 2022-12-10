@@ -41,3 +41,12 @@
 2022-12-10 16:51:09,048 INFO info [main] Request: command: show; args: []
 2022-12-10 16:51:09,049 INFO info [main] Request was sent to address /192.168.56.1:62211
 2022-12-10 16:51:09,049 INFO info [main] Request: success: true; content: Collection is empty 
+2022-12-10 17:04:38,862 INFO info [main] Received new request from /192.168.56.1:56704
+2022-12-10 17:04:38,862 INFO info [main] Request: command: help; args: []
+2022-12-10 17:04:38,863 INFO info [main] Request was sent to address /192.168.56.1:56704
+2022-12-10 17:04:38,864 INFO info [main] Request: success: true; content: add                           ...
+2022-12-10 18:56:18,640 INFO info [main] Server started on port 9000
+2022-12-10 18:56:38,537 INFO info [main] Received new request from /192.168.56.1:63742
+2022-12-10 18:56:38,537 INFO info [main] Request: command: help; args: []
+2022-12-10 18:56:38,539 INFO info [main] Request was sent to address /192.168.56.1:63742
+2022-12-10 18:56:38,540 INFO info [main] Request: success: true; content: add                           ...
