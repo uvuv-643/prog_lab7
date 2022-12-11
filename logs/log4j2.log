@@ -1,13 +1,8 @@
-2022-12-11 18:30:24,390 INFO info [main] Server started on port 9000
-2022-12-11 18:30:33,626 INFO info [main] Received new request from /192.168.56.1:53184
-2022-12-11 18:30:33,627 INFO info [main] Request: command: help; args: []
-2022-12-11 18:30:33,630 INFO info [main] Request was sent to address /192.168.56.1:53184
-2022-12-11 18:30:33,631 INFO info [main] Request: success: true; content: add                           ...
-2022-12-11 18:30:49,613 INFO info [main] Received new request from /192.168.56.1:53184
-2022-12-11 18:30:49,613 INFO info [main] Request: command: check_id; args: []
-2022-12-11 18:30:49,614 INFO info [main] Request was sent to address /192.168.56.1:53184
-2022-12-11 18:30:49,614 INFO info [main] Request: success: false; content: Command <check_id> is used wit...
-2022-12-11 18:32:15,261 INFO info [main] Received new request from /192.168.56.1:51396
-2022-12-11 18:32:15,261 INFO info [main] Request: command: info; args: []
-2022-12-11 18:32:15,267 INFO info [main] Request was sent to address /192.168.56.1:51396
-2022-12-11 18:32:15,268 INFO info [main] Request: success: true; content: Type of collection: class java...
+2022-12-12 00:24:44,695 INFO info [main] Server started on port 9000
+2022-12-12 00:27:10,173 INFO info [main] Server started on port 9000
+2022-12-12 00:29:51,337 INFO info [main] Server started on port 9000
+2022-12-12 00:33:27,711 INFO info [main] Server started on port 9000
+2022-12-12 00:35:04,807 INFO info [main] Server started on port 9000
+2022-12-12 00:35:31,086 INFO info [main] Server started on port 9000
+2022-12-12 00:36:56,930 INFO info [main] Server started on port 9000
+2022-12-12 00:38:37,294 INFO info [main] Server started on port 9000

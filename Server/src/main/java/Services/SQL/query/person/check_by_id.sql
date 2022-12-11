@@ -1,0 +1,1 @@
+SELECT COUNT(id) FROM persons WHERE id = ? and user_id = ?

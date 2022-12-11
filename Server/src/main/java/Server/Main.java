@@ -6,6 +6,8 @@ import Entities.Person;
 import Input.FileManager.FileManager;
 import Services.Request;
 import Services.Response;
+import Services.SQL.SQLManager;
+import Services.SQL.SQLQuery;
 import com.google.gson.JsonParseException;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        SQLManager.executeQuery(SQLQuery.PERSON_CREATE, "123", "#21");
+        SQLManager.executeQuery(SQLQuery.PERSON_REORDER, "123", "#21");
         ArrayList<Person> collection = new ArrayList<>();
         try {
             FileManager fileManager = new FileManager();
