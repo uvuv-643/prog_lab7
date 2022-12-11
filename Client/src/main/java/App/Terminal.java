@@ -3,6 +3,7 @@ package App;
 import CommandPattern.Invoker;
 import Exceptions.ExecuteCommandException;
 import Exceptions.ExecuteScriptException;
+import Services.LoginCredentials;
 import Services.Request;
 import Services.Response;
 
@@ -96,6 +97,9 @@ public class Terminal {
         String command = commandLine[0].trim();
         Optional<Request> lineHandlerResult = invoker.execute(command, Arrays.copyOfRange(commandLine, 1, commandLine.length));
         if (lineHandlerResult.isPresent()) {
+            String login = "admin";
+            String password = "admin";
+            lineHandlerResult.get().setLoginCredentials(new LoginCredentials(login, password));
             System.out.println("Executing <" + command + ">...");
             Request request = lineHandlerResult.get();
             client.send(request);

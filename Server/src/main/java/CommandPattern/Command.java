@@ -24,10 +24,4 @@ public interface Command {
      */
     Response execute(Request request, Invoker invoker);
 
-    /**
-     * Получить справку по текущей команде
-     * @return String - справка по текущей команде
-     */
-    String getHelp();
-
 }

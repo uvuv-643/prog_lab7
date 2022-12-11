@@ -6,30 +6,25 @@ import CommandPattern.Receiver;
 import Services.Request;
 import Services.Response;
 
-import java.util.Optional;
-
-public class Exit implements Command {
+public class Register implements Command {
 
     private final Receiver receiver;
 
-    public Exit(Receiver receiver) {
+    public Register(Receiver receiver) {
         this.receiver = receiver;
     }
 
     @Override
     public Response execute(Request request, Invoker invoker) {
-        if (request.getArgs().length == 0) {
-            receiver.save();
-            receiver.exit();
-            return new Response(true, "");
+        if (request.getArgs().length == 2) {
+            return receiver.register(request.getArgs()[0], request.getArgs()[1]);
         } else {
-            return new Response(false, "Command <exit> is used without arguments");
+            return new Response(false, "Command <register> is used with 2 arguments");
         }
     }
 
     static public String getHelp() {
-        return "Good bye";
+        return "Command to add new user in database";
     }
-
 
 }

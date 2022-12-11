@@ -25,8 +25,7 @@ public class Save implements Command {
         }
     }
 
-    @Override
-    public String getHelp() {
+    static public String getHelp() {
         return "You cannot save collection to file";
     }
 

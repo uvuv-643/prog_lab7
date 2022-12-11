@@ -46,10 +46,11 @@ public class Main {
                     } catch (NullPointerException e) {
                         return;
                     }
-                    if (serverInteractiveCommand.equals("save") || serverInteractiveCommand.equals("exit")) {
-                        Request request = new Request(serverInteractiveCommand, new String[]{});
-                        Response response = invoker.execute(request);
+                    if (serverInteractiveCommand.equals("save")) {
+                        Response response = receiver.save();
                         System.out.println(response.getMessage());
+                    } else if (serverInteractiveCommand.equals("exit")) {
+                        receiver.exit();
                     } else {
                         System.out.println("Cannot execute this command. Server able to execute only <save> and <exit>");
                     }

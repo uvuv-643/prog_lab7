@@ -4,6 +4,7 @@ import App.Client;
 import Entities.Person;
 import Exceptions.ExecuteScriptException;
 import Input.InputManager;
+import Services.LoginCredentials;
 import Services.Request;
 import App.Terminal;
 

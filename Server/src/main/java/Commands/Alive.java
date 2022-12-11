@@ -6,23 +6,21 @@ import CommandPattern.Receiver;
 import Services.Request;
 import Services.Response;
 
-import java.util.Optional;
-
-public class ExecuteScript implements Command {
+public class Alive implements Command {
 
     private final Receiver receiver;
 
-    public ExecuteScript(Receiver receiver) {
+    public Alive(Receiver receiver) {
         this.receiver = receiver;
     }
 
     @Override
     public Response execute(Request request, Invoker invoker) {
-        return new Response(false, "Command <execute_script> is unavailable");
+        return new Response(true, "Server is alive");
     }
 
     static public String getHelp() {
-        return "Type <execute_script filename> to run commands from file";
+        return "Command to check connection with server";
     }
 
 }

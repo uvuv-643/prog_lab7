@@ -34,22 +34,26 @@ public class Invoker {
      * @see Receiver
      */
     public Invoker(Receiver receiver) {
-        this.register(String.valueOf(CommandName.ADD), new Add(receiver));
-        this.register(String.valueOf(CommandName.ADD_IF_MIN), new AddIfMin(receiver));
-        this.register(String.valueOf(CommandName.CLEAR), new Clear(receiver));
-        this.register(String.valueOf(CommandName.EXECUTE_SCRIPT), new ExecuteScript(receiver));
-        this.register(String.valueOf(CommandName.EXIT), new Exit(receiver));
-        this.register(String.valueOf(CommandName.FILTER_GREATER_THAN_NATIONALITY), new FilterGreaterThanNationality(receiver));
-        this.register(String.valueOf(CommandName.HELP), new Help());
-        this.register(String.valueOf(CommandName.INFO), new Info(receiver));
-        this.register(String.valueOf(CommandName.PRINT_DESCENDING), new PrintDescending(receiver));
-        this.register(String.valueOf(CommandName.PRINT_FIELD_DESCENDING_ORDER), new PrintFieldDescendingOrder(receiver));
-        this.register(String.valueOf(CommandName.REMOVE_AT), new RemoveAt(receiver));
-        this.register(String.valueOf(CommandName.REMOVE_BY_ID), new RemoveById(receiver));
-        this.register(String.valueOf(CommandName.REORDER), new Reorder(receiver));
-        this.register(String.valueOf(CommandName.SAVE), new Save(receiver));
-        this.register(String.valueOf(CommandName.SHOW), new Show(receiver));
-        this.register(String.valueOf(CommandName.UPDATE), new Update(receiver));
+        this.register("add", new Add(receiver));
+        this.register("add_if_min", new AddIfMin(receiver));
+        this.register("clear", new Clear(receiver));
+        // this.register(String.valueOf(CommandName.EXECUTE_SCRIPT), new ExecuteScript(receiver));
+        // this.register(String.valueOf(CommandName.EXIT), new Exit(receiver));
+        this.register("filter_greater_than_nationality", new FilterGreaterThanNationality(receiver));
+        this.register("help", new Help());
+        this.register("info", new Info(receiver));
+        this.register("print_descending", new PrintDescending(receiver));
+        this.register("print_field_descending_order", new PrintFieldDescendingOrder(receiver));
+        this.register("remove_at", new RemoveAt(receiver));
+        this.register("remove_by_id", new RemoveById(receiver));
+        this.register("reorder", new Reorder(receiver));
+        // this.register(String.valueOf(CommandName.SAVE), new Save(receiver));
+        this.register("show", new Show(receiver));
+        this.register("update", new Update(receiver));
+        this.register("alive", new Alive(receiver));
+        this.register("check_id", new CheckId(receiver));
+        this.register("auth", new Auth(receiver));
+        this.register("register", new Register(receiver));
     }
 
     /**

@@ -315,4 +315,26 @@ public class Receiver {
         return (new Response(true, responseText.toString()));
     }
 
+    public Response register(String login, String password) {
+        System.out.println("Registered");
+        return new Response(true, "Registred");
+    }
+
+    public Response auth(String login, String password) {
+        System.out.println("Login");
+        return new Response(login.equals("admin") && password.equals("admin"), "Login");
+    }
+
+    public Response checkId(String idRaw) {
+        long id;
+        IDValidator idValidator = new IDValidator();
+        try {
+            id = idValidator.validate(idRaw).getValidatedData();
+            idValidator.validateNotUnique(id, collection);
+            return new Response(true, "Ok");
+        } catch (ValidationException exception) {
+            return (new Response(false, "Not ok"));
+        }
+    }
+
 }

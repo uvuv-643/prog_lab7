@@ -9,11 +9,11 @@ import Services.Response;
 
 import java.util.Optional;
 
-public class FilterGreaterThanNationality implements Command {
+public class CheckId implements Command {
 
     private final Receiver receiver;
 
-    public FilterGreaterThanNationality(Receiver receiver) {
+    public CheckId(Receiver receiver) {
         this.receiver = receiver;
     }
 
@@ -25,9 +25,9 @@ public class FilterGreaterThanNationality implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 1) {
-                    return receiver.filterGreaterThanNationality(request.getArgs()[0]);
+                    return receiver.checkId(request.getArgs()[0]);
                 } else {
-                    return new Response(false, "Command <filter_greater_than_nationality> must have only 1 argument, found " + request.getArgs().length);
+                    return new Response(false, "Command <check_id> is used with 1 argument");
                 }
             }
         }
@@ -35,7 +35,7 @@ public class FilterGreaterThanNationality implements Command {
     }
 
     static public String getHelp() {
-        return "Type <filter_greater_than_nationality nationality> to display collection elements where nationality is greater then parameter passed to the command";
+        return "Command <check_id ud> used to check if element with id is in collection";
     }
 
 }

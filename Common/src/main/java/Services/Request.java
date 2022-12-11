@@ -6,6 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.net.SocketAddress;
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Общий класс для всех запросов, отправляемых клиентом на сервер.
@@ -23,6 +24,8 @@ public class Request implements Serializable {
 
     /** Аргументы команды к исполнению */
     private String[] args;
+
+    private LoginCredentials loginCredentials;
 
     /** Поле, которое может быть null, передаётся в случае, если необходимо добавить / обновить элемент */
     private Person person;
@@ -49,6 +52,26 @@ public class Request implements Serializable {
         this.commandName = commandName;
         this.person = person;
         this.args = new String[]{};
+    }
+
+    public Request(String commandName, Person person, LoginCredentials loginCredentials) {
+        this(commandName, person);
+        this.loginCredentials = loginCredentials;
+    }
+
+    public Request(String commandName, LoginCredentials loginCredentials) {
+        this(commandName);
+        this.loginCredentials = loginCredentials;
+    }
+
+    public Request(String commandName, String[] args, LoginCredentials loginCredentials) {
+        this(commandName, args);
+        this.loginCredentials = loginCredentials;
+    }
+
+    public Request(String commandName, String[] args, Person person, LoginCredentials loginCredentials) {
+        this(commandName, args, person);
+        this.loginCredentials = loginCredentials;
     }
 
     public String getCommandName() {
@@ -88,4 +111,11 @@ public class Request implements Serializable {
         return "command: " + commandName + "; args: " + Arrays.toString(args);
     }
 
+    public Optional<LoginCredentials> getLoginCredentials() {
+        return Optional.of(loginCredentials);
+    }
+
+    public void setLoginCredentials(LoginCredentials loginCredentials) {
+        this.loginCredentials = loginCredentials;
+    }
 }
