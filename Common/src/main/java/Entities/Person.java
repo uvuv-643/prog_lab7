@@ -53,7 +53,7 @@ public class Person implements Comparable<Person>, Serializable {
         return new Person(null, name, coordinates, null, height, weight, eyeColor, nationality, location);
     }
 
-    public static Person personCreator(Person person, long generatedId) throws ValidationException {
+    public static Person personCreator(Person person) throws ValidationException {
         ZonedDateTime created_at = ZonedDateTime.now();
         nameValidator.validate(person.getName());
         coordinatesValidator.validate(person.getCoordinates());
@@ -62,7 +62,7 @@ public class Person implements Comparable<Person>, Serializable {
         eyeColorValidator.validate(person.getEyeColor());
         nationalityValidator.validate(person.getNationality());
         locationValidator.validate(person.getLocation());
-        return new Person(generatedId, person.getName(), person.getCoordinates(), created_at, person.getHeight(), person.getWeight(), person.getEyeColor(), person.getNationality(), person.getLocation());
+        return new Person(null, person.getName(), person.getCoordinates(), created_at, person.getHeight(), person.getWeight(), person.getEyeColor(), person.getNationality(), person.getLocation());
     }
 
     public static Person personUpdater(Person person, long generatedId, ZonedDateTime creationDate) throws ValidationException {

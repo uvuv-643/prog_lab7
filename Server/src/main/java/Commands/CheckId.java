@@ -25,7 +25,7 @@ public class CheckId implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 1) {
-                    return receiver.checkId(request.getArgs()[0]);
+                    return receiver.checkId(request.getArgs()[0], response.getUserId());
                 } else {
                     return new Response(false, "Command <check_id> is used with 1 argument");
                 }

@@ -25,7 +25,7 @@ public class Clear implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 0) {
-                    return receiver.clear();
+                    return receiver.clear(response.getUserId());
                 } else {
                     return new Response(false, "Command <clear> is used without arguments");
                 }

@@ -54,3 +54,45 @@
 2022-12-12 14:38:40,020 INFO info [main] Operation was executed successfully
 2022-12-12 14:38:40,020 INFO info [main] Request was sent to address /192.168.56.1:51380
 2022-12-12 14:38:40,021 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-12 14:44:07,075 INFO info [main] Received new request from /192.168.56.1:51380
+2022-12-12 14:44:07,075 INFO info [main] Request: command: add; args: []
+2022-12-12 14:44:07,076 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-12 14:44:07,077 INFO info [main] Operation was executed successfully
+2022-12-12 14:44:07,077 INFO info [main] Attempt to execute <execute_query_location_create>
+2022-12-12 14:44:07,091 INFO info [main] Operation was executed successfully
+2022-12-12 14:44:07,091 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-12 14:44:07,093 INFO info [main] Operation was executed successfully
+2022-12-12 14:44:07,094 INFO info [main] Request was sent to address /192.168.56.1:51380
+2022-12-12 14:44:07,094 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-12 14:53:51,681 INFO info [main] Received new request from /192.168.56.1:51380
+2022-12-12 14:53:51,681 INFO info [main] Request: command: add; args: []
+2022-12-12 14:53:51,681 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-12 14:53:51,685 INFO info [main] Operation was executed successfully
+2022-12-12 14:53:51,686 INFO info [main] Attempt to execute <execute_query_location_create>
+2022-12-12 14:53:51,689 INFO info [main] Operation was executed successfully
+2022-12-12 14:53:51,689 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-12 14:53:51,709 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "user_id_foreign_key"
+  Подробности: Ключ (user_id)=(2) отсутствует в таблице "users".
+2022-12-12 14:53:51,709 INFO info [main] Request was sent to address /192.168.56.1:51380
+2022-12-12 14:53:51,710 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-12 14:55:31,301 INFO info [main] Server started on port 9000
+2022-12-12 14:55:46,186 INFO info [main] Received new request from /192.168.56.1:56032
+2022-12-12 14:55:46,187 INFO info [main] Request: command: add; args: []
+2022-12-12 14:55:46,582 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-12 14:55:46,613 INFO info [main] Operation was executed successfully
+2022-12-12 14:55:46,614 INFO info [main] Attempt to execute <execute_query_location_create>
+2022-12-12 14:55:46,618 INFO info [main] Operation was executed successfully
+2022-12-12 14:55:46,619 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-12 14:55:46,645 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "user_id_foreign_key"
+  Подробности: Ключ (user_id)=(2) отсутствует в таблице "users".
+2022-12-12 14:55:46,645 INFO info [main] Request was sent to address /192.168.56.1:56032
+2022-12-12 14:55:46,647 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-12 22:31:06,237 INFO info [main] Server started on port 9000
+2022-12-12 22:31:18,995 INFO info [main] Received new request from /192.168.56.1:54380
+2022-12-12 22:31:18,996 INFO info [main] Request: command: help; args: []
+2022-12-12 22:31:18,997 INFO info [main] Request was sent to address /192.168.56.1:54380
+2022-12-12 22:31:18,998 INFO info [main] Request: success: false; content: Failed to login
+2022-12-12 22:33:50,905 INFO info [main] Received new request from /192.168.56.1:56306
+2022-12-12 22:33:50,905 INFO info [main] Request: command: info; args: []
+2022-12-12 22:33:50,905 INFO info [main] Request was sent to address /192.168.56.1:56306
+2022-12-12 22:33:50,906 INFO info [main] Request: success: false; content: Failed to login

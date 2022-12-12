@@ -25,7 +25,7 @@ public class AddIfMin implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 0) {
-                    return receiver.addIfMin(request.getPerson());
+                    return receiver.addIfMin(request.getPerson(), response.getUserId());
                 } else {
                     return new Response(false, "Command <add_if_min> is used without arguments");
                 }

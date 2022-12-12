@@ -18,15 +18,17 @@ public class PersonService implements PersonDAO {
     }
 
     @Override
-    public boolean create(Person person, long userId) {
+    public Optional<Long> create(Person person, long userId) {
         Optional<Long> coordinateId = SQLManager.executeQueryCoordinateCreate(person.getCoordinates());
         Optional<Long> locationId = SQLManager.executeQueryLocationCreate(person.getLocation());
         Optional<Long> personId = Optional.empty();
         if (coordinateId.isPresent()) {
             Long actualLocationId = locationId.orElse(null);
             personId = SQLManager.executeQueryPersonCreate(coordinateId.get(), person.getHeight(),  person.getWeight(), person.getEyeColor(), person.getNationality(), actualLocationId, userId);
+        } else {
+            System.out.println("Coordinates is null ???");
         }
-        return personId.isPresent();
+        return personId;
     }
 
     @Override

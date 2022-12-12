@@ -25,7 +25,7 @@ public class Reorder implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 0) {
-                    return receiver.reorder();
+                    return receiver.reorder(response.getUserId());
                 } else {
                     return new Response(false, "Command <reorder> is used without arguments" + request.getArgs().length);
                 }

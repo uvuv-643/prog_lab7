@@ -25,7 +25,7 @@ public class Update implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 1) {
-                    return receiver.update(request.getPerson(), request.getArgs()[0]);
+                    return receiver.update(request.getPerson(), request.getArgs()[0], response.getUserId());
                 } else {
                     return new Response(false, "Command <update> must have only 1 argument, found " + request.getArgs().length);
                 }

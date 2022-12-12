@@ -5,12 +5,13 @@ import Entities.Person;
 import Services.LoginCredentials;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PersonDAO {
 
     List<Person> readAll();
 
-    boolean create(Person person, long userId);
+    Optional<Long> create(Person person, long userId);
 
     boolean updateById(long id, Person person, long userId);
 

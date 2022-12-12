@@ -2,16 +2,18 @@ package Services;
 
 import DAOPattern.UserDAO;
 
+import java.util.Optional;
+
 public class UserService implements UserDAO {
 
     @Override
-    public boolean create(LoginCredentials loginCredentials) {
-        return false;
+    public Optional<Long> create(LoginCredentials loginCredentials) {
+        return Optional.empty();
     }
 
     @Override
-    public boolean check(LoginCredentials loginCredentials) {
-        return false;
+    public Optional<Long> check(LoginCredentials loginCredentials) {
+        return Optional.empty();
     }
 
 }

@@ -25,7 +25,7 @@ public class RemoveAt implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 1) {
-                    return receiver.removeAt(request.getArgs()[0]);
+                    return receiver.removeAt(request.getArgs()[0], response.getUserId());
                 } else {
                     return new Response(false, "Command <removed_at> must have only 1 argument, found " + request.getArgs().length);
                 }

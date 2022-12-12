@@ -2,10 +2,12 @@ package DAOPattern;
 
 import Services.LoginCredentials;
 
+import java.util.Optional;
+
 public interface UserDAO {
 
-    boolean create(LoginCredentials loginCredentials);
+    Optional<Long> create(LoginCredentials loginCredentials);
 
-    boolean check(LoginCredentials loginCredentials);
+    Optional<Long> check(LoginCredentials loginCredentials);
 
 }

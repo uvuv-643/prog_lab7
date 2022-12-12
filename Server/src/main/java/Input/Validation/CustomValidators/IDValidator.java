@@ -1,9 +1,11 @@
 package Input.Validation.CustomValidators;
 
+import DAOPattern.PersonDAO;
 import Entities.Person;
 import Exceptions.ValidationException;
 import Input.Validation.ValidatedData;
 import Input.Validation.Validator;
+import Services.PersonService;
 
 import java.util.ArrayList;
 
@@ -13,6 +15,12 @@ import java.util.ArrayList;
  * @version 1.0
  */
 public class IDValidator implements Validator {
+
+    private PersonDAO personService;
+
+    public IDValidator(PersonDAO personService) {
+        this.personService = personService;
+    }
 
     @Override
     public ValidatedData<Long> validate(String data) throws ValidationException {
@@ -33,33 +41,34 @@ public class IDValidator implements Validator {
     }
 
     /**
-     * Проверяет, является ли указанный ID уникальным на коллекции элементов
-     * @param Id - проверяемый ID
-     * @param collection - коллекция, над которой осуществляется проверка
+     * Проверяет, является ли указанный ID уникальным на коллекции элементов и принадлежит пользователю
+     * @param id - проверяемый ID
+     * @param userId - пользователь, на принадлежность которому проверяется элемент
      * @return Long - ID
      * @throws ValidationException - выбрасывается, если ID не является уникальным
      */
-    public ValidatedData<Long> validateUnique(Long Id, ArrayList<Person> collection) throws ValidationException {
-        boolean isUnique = collection.stream().noneMatch((element) -> element.getId().equals(Id));
+    @Deprecated
+    public ValidatedData<Long> validateUnique(Long id, Long userId) throws ValidationException {
+        boolean isUnique = personService.checkById(id, userId);
         if (isUnique) {
-            return new ValidatedData<>(Id);
+            return new ValidatedData<>(id);
         }
         throw new ValidationException("ID is not unique");
     }
 
     /**
-     * Проверяет, является ли указанный ID неуникальным на коллекции элементов
-     * @param Id - проверяемый ID
-     * @param collection - коллекция, над которой осуществляется проверка
+     * Проверяет, является ли указанный ID неуникальным на коллекции элементов и принадлежит пользователю
+     * @param id - проверяемый ID
+     * @param userId - пользователь, на принадлежность которому проверяется элемент
      * @return Long - ID
      * @throws ValidationException - выбрасывается, если ID является уникальным
      */
-    public ValidatedData<Long> validateNotUnique(Long Id, ArrayList<Person> collection) throws ValidationException {
-        boolean isUnique = collection.stream().noneMatch((element) -> element.getId().equals(Id));
+    public ValidatedData<Long> validateNotUnique(Long id, Long userId) throws ValidationException {
+        boolean isUnique = personService.checkById(id, userId);
         if (isUnique) {
             throw new ValidationException("ID is unique");
         }
-        return new ValidatedData<>(Id);
+        return new ValidatedData<>(id);
 
     }
 

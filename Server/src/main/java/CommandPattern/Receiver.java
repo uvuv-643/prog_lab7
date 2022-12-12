@@ -1,19 +1,18 @@
 package CommandPattern;
 
+import DAOPattern.PersonDAO;
+import DAOPattern.UserDAO;
 import Entities.Country;
 import Entities.Person;
+import Exceptions.DatabaseException;
 import Exceptions.ValidationException;
 import Input.FileManager.FileManager;
-import Input.Generators.IDGenerator;
 import Input.Validation.CustomValidators.IDValidator;
 import Input.Validation.CustomValidators.IndexValidator;
 import Input.Validation.CustomValidators.NationalityValidator;
 import Output.OutputManager;
-import Services.PersonService;
-import Services.Request;
-import Services.Response;
+import Services.*;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -34,6 +33,9 @@ public class Receiver {
 
     /** Объект, управляющий выводом информации со стандартного потока ввода */
     private final OutputManager outputManager = new OutputManager();
+    private final UserDAO userService = new UserService();
+    private final PersonDAO personService = new PersonService();
+    private final IDValidator idValidator = new IDValidator(personService);
 
     /** Коллекция, над которой выполняются команды */
     private final ArrayList<Person> collection;
@@ -79,19 +81,24 @@ public class Receiver {
      * @param person - объект, представленный к добавлению в коллекцию
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response add(Person person) {
+    public Response add(Person person, long userId) {
         StringBuilder responseText = new StringBuilder();
         try {
-            IDGenerator idGenerator = new IDGenerator(collection);
-            long generatedId = idGenerator.generate();
-            Person personValidated = Person.personCreator(person, generatedId);
-            collection.add(personValidated);
-            PersonService personService = new PersonService();
-            personService.create(personValidated, 2);
-            responseText.append("Successfully added element to collection.");
+            Person personValidated = Person.personCreator(person);
+            Optional<Long> personId = personService.create(personValidated, userId);
+            if (personId.isPresent()) {
+                personValidated.setId(personId.get());
+                collection.add(personValidated);
+                responseText.append("Successfully added element to collection.");
+            } else {
+                throw new DatabaseException("Error when creating person");
+            }
             return (new Response(true, responseText.toString()));
         } catch (ValidationException exception) {
             responseText.append("Provided data is incorrect. ").append(exception.getMessage());
+            return (new Response(false, responseText.toString()));
+        } catch (DatabaseException exception) {
+            responseText.append(exception.getMessage());
             return (new Response(false, responseText.toString()));
         }
     }
@@ -102,31 +109,23 @@ public class Receiver {
      * @param idRaw - id элемента в коллекции, который необходимо обновить
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response update(Person person, String idRaw) {
+    public Response update(Person person, String idRaw, long userId) {
         StringBuilder responseText = new StringBuilder();
         long id;
-        IDValidator idValidator = new IDValidator();
         try {
             id = idValidator.validate(idRaw).getValidatedData();
-            idValidator.validateNotUnique(id, collection);
-            try {
-                Person personValidated = Person.personCreator(person, id);
-                int updatedCount = 0;
+            idValidator.validateNotUnique(id, userId);
+            Person personValidated = Person.personCreator(person);
+            boolean isUpdatedPerson = personService.updateById(id, personValidated, userId);
+            if (isUpdatedPerson) {
                 for (Person collectionPerson : collection) {
                     if (collectionPerson.getId().equals(id)) {
                         personValidated.setCreationDate(collectionPerson.getCreationDate());
                         collection.set(collection.indexOf(collectionPerson), personValidated);
-                        updatedCount++;
                     }
                 }
-                if (updatedCount == 0) {
-                    throw new ValidationException("Not found element with this id");
-                }
-                return (new Response(true, responseText.toString()));
-            } catch (ValidationException exception) {
-                responseText.append("Internal server error. ").append(exception.getMessage());
-                return (new Response(false, responseText.toString()));
             }
+            return (new Response(true, responseText.toString()));
         } catch (ValidationException exception) {
             responseText.append("Passed incorrect ID");
             return (new Response(false, responseText.toString()));
@@ -138,20 +137,21 @@ public class Receiver {
      * @param idRaw - id элемента в коллекции, который необходимо удалить
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response removeById(String idRaw) {
+    public Response removeById(String idRaw, long userId) {
         StringBuilder responseText = new StringBuilder();
         long id;
-        IDValidator idValidator = new IDValidator();
         try {
             id = idValidator.validate(idRaw).getValidatedData();
-            idValidator.validateNotUnique(id, collection);
+            idValidator.validateNotUnique(id, userId);
             try {
-                Optional<Person> elementInCollection = collection.stream().filter((element) -> element.getId().equals(id)).findFirst();
-                elementInCollection.ifPresent(collection::remove);
-                if (elementInCollection.isEmpty()) {
+                boolean isRemovedPerson = personService.removeById(id, userId);
+                if (isRemovedPerson) {
+                    Optional<Person> elementInCollection = collection.stream().filter((element) -> element.getId().equals(id)).findFirst();
+                    elementInCollection.ifPresent(collection::remove);
+                    return (new Response(true, responseText.toString()));
+                } else {
                     throw new ValidationException("Not found element with this id");
                 }
-                return (new Response(true, responseText.toString()));
             } catch (ValidationException exception) {
                 responseText.append("Internal server error. ").append(exception.getMessage());
                 return (new Response(false, responseText.toString()));
@@ -166,15 +166,22 @@ public class Receiver {
      * Команда "clear"
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response clear() {
-        collection.clear();
-        return (new Response(true, ""));
+    public Response clear(long userId) {
+        boolean isCleared = personService.clear(userId);
+        if (isCleared) {
+            collection.clear();
+            return (new Response(true, ""));
+        } else {
+            return (new Response(false, "Unable to clear collection"));
+        }
     }
 
     /**
      * Команда "save"
      * @return Response - ответ на запрос выполнения команды
      */
+
+    @Deprecated
     public Response save() {
         StringBuilder responseText = new StringBuilder();
         FileManager worker = new FileManager();
@@ -208,14 +215,21 @@ public class Receiver {
      * @param indexRaw - индекс элемента в коллекции, который необходимо удалить
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response removeAt(String indexRaw) {
+    public Response removeAt(String indexRaw, long userId) {
         StringBuilder responseText = new StringBuilder();
         int index;
         IndexValidator indexValidator = new IndexValidator();
         try {
             index = indexValidator.validate(indexRaw).getValidatedData();
-            collection.remove(index);
-            return (new Response(true, responseText.toString()));
+            Person personOnRemoving = collection.get(index);
+            idValidator.validateNotUnique(personOnRemoving.getId(), userId);
+            boolean isRemoved = personService.removeById(personOnRemoving.getId(), userId);
+            if (isRemoved) {
+                collection.remove(index);
+                return (new Response(true, responseText.toString()));
+            } else {
+                responseText.append("Unable to remove this person. Perhaps you are not owner of this object.");
+            }
         } catch (ValidationException exception) {
             responseText.append(exception.getMessage());
         } catch (IndexOutOfBoundsException exception) {
@@ -229,35 +243,42 @@ public class Receiver {
      * @param person - объект, который необходимо добавить в коллекцию
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response addIfMin(Person person) {
+    public Response addIfMin(Person person, long userId) {
         StringBuilder responseText = new StringBuilder();
         try {
-            IDGenerator idGenerator = new IDGenerator(collection);
-            long generatedId = idGenerator.generate();
-            Person personValidated = Person.personCreator(person, generatedId);
+            Person personValidated = Person.personCreator(person);
             Optional<Person> min = collection.stream().min(Comparator.comparingInt(Person::getHeight));
-            min.ifPresentOrElse((element) -> {
-                if (personValidated.compareTo(element) < 0) {
+            if (min.isPresent() && personValidated.compareTo(min.get()) < 0 || min.isEmpty()) {
+                Optional<Long> personId = personService.create(personValidated, userId);
+                if (personId.isPresent()) {
+                    personValidated.setId(personId.get());
                     collection.add(personValidated);
+                    responseText.append("Successfully added element to collection.");
+                    return (new Response(true, responseText.toString()));
+                } else {
+                    throw new DatabaseException("Error when creating person");
                 }
-            }, () -> collection.add(personValidated));
-            return (new Response(min.isEmpty() || personValidated.compareTo(min.get()) < 0, responseText.toString()));
+            }
         } catch (ValidationException exception) {
-            responseText.append("Internal server error. ").append(exception.getMessage());
+            responseText.append("Provided data is incorrect. ").append(exception.getMessage());
+            return (new Response(false, responseText.toString()));
+        } catch (DatabaseException exception) {
+            responseText.append(exception.getMessage());
             return (new Response(false, responseText.toString()));
         }
+        return (new Response(false, "This person is not minimal in collection"));
     }
 
     /**
      * Команда "reorder"
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response reorder() {
-        if (collection.size() > 0) {
-            Collections.reverse(collection);
-            return (new Response(true, ""));
+    public Response reorder(long userId) {
+        boolean isCleared = personService.clear(userId);
+        if (isCleared) {
+            return new Response(true, "Successfully cleared");
         } else {
-            return (new Response(false, "Collection is empty"));
+            return new Response(false, "You cannot clear your collection");
         }
     }
 
@@ -319,21 +340,20 @@ public class Receiver {
     }
 
     public Response register(String login, String password) {
-        System.out.println("Registered");
-        return new Response(true, "Registred");
+        Optional<Long> userId = userService.create(new LoginCredentials(login, password));
+        return userId.map(aLong -> new Response(true, "User registered successfully.", aLong)).orElseGet(() -> new Response(false, "Cannot register user"));
     }
 
     public Response auth(String login, String password) {
-        System.out.println("Login");
-        return new Response(login.equals("admin") && password.equals("admin"), "Login");
+        Optional<Long> userId = userService.check(new LoginCredentials(login, password));
+        return userId.map(aLong -> new Response(true, "Login", aLong)).orElseGet(() -> new Response(false, "Error"));
     }
 
-    public Response checkId(String idRaw) {
+    public Response checkId(String idRaw, long userId) {
         long id;
-        IDValidator idValidator = new IDValidator();
         try {
             id = idValidator.validate(idRaw).getValidatedData();
-            idValidator.validateNotUnique(id, collection);
+            idValidator.validateNotUnique(id, userId);
             return new Response(true, "Ok");
         } catch (ValidationException exception) {
             return (new Response(false, "Not ok"));

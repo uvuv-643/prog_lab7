@@ -19,9 +19,17 @@ public class Response implements Serializable {
     /** Сообщение пользователю (успешный результат выполнения, ошибка, уведомление) */
     private String message;
 
+    private long userId;
+
     public Response(boolean success, String message) {
         this.success = success;
         this.message = message;
+    }
+
+    public Response(boolean success, String message, long userId) {
+        this.success = success;
+        this.message = message;
+        this.userId = userId;
     }
 
     public String getMessage() {
@@ -45,4 +53,11 @@ public class Response implements Serializable {
         return "success: " + Boolean.toString(success) + "; content: " + (message.length() > 30 ? message.substring(0, 30).replaceAll("\n", " ") + "..." : message.replaceAll("\n", " "));
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 }

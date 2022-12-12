@@ -25,7 +25,7 @@ public class RemoveById implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 1) {
-                    return receiver.removeById(request.getArgs()[0]);
+                    return receiver.removeById(request.getArgs()[0], response.getUserId());
                 } else {
                     return new Response(false, "Command <remove_by_id> must have only 1 argument, found " + request.getArgs().length);
                 }
