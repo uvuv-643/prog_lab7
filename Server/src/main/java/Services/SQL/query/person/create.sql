@@ -3,15 +3,15 @@ INSERT INTO persons (
     height,
     weight,
     color,
-    country_id,
+    country,
     location_id,
     user_id
 ) VALUES (
     ?,
     ?,
     ?,
-    ?,
-    (SELECT id FROM countries WHERE countries.country = ?),
+    ?::color,
+    ?::country,
     ?,
     ?
-)
+) RETURNING id

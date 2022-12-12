@@ -6,3 +6,51 @@
 2022-12-12 00:35:31,086 INFO info [main] Server started on port 9000
 2022-12-12 00:36:56,930 INFO info [main] Server started on port 9000
 2022-12-12 00:38:37,294 INFO info [main] Server started on port 9000
+2022-12-12 13:14:45,325 INFO info [main] No suitable driver found for jdbc:postgresql://localhost:5433/postgres Cannot create connection
+2022-12-12 13:18:14,457 INFO info [main] Server started on port 9000
+2022-12-12 13:19:34,281 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "country_id" в таблице "persons" не существует
+  Позиция: 87
+2022-12-12 13:19:34,414 INFO info [main] Server started on port 9000
+2022-12-12 13:20:04,734 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
+  Подсказка: Перепишите выражение или преобразуйте его тип.
+  Позиция: 171
+2022-12-12 13:20:04,866 INFO info [main] Server started on port 9000
+2022-12-12 13:20:52,656 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
+  Подсказка: Перепишите выражение или преобразуйте его тип.
+  Позиция: 171
+2022-12-12 13:20:52,785 INFO info [main] Server started on port 9000
+2022-12-12 13:21:37,064 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - integer
+  Подсказка: Перепишите выражение или преобразуйте его тип.
+  Позиция: 171
+2022-12-12 13:21:37,206 INFO info [main] Server started on port 9000
+2022-12-12 13:24:12,324 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: привести тип integer к color нельзя
+  Позиция: 173
+2022-12-12 13:24:12,449 INFO info [main] Server started on port 9000
+2022-12-12 13:24:31,082 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "location_foreign_key"
+  Подробности: Ключ (location_id)=(1) отсутствует в таблице "locations".
+2022-12-12 13:24:31,223 INFO info [main] Server started on port 9000
+2022-12-12 13:25:30,934 INFO info [main] SQL org.postgresql.util.PSQLException: Запрос не вернул результатов.
+2022-12-12 13:25:31,063 INFO info [main] Server started on port 9000
+2022-12-12 13:26:24,675 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: привести тип integer к country нельзя
+  Позиция: 189
+2022-12-12 13:26:24,802 INFO info [main] Server started on port 9000
+2022-12-12 13:26:41,120 INFO info [main] SQL org.postgresql.util.PSQLException: Запрос не вернул результатов.
+2022-12-12 13:26:41,273 INFO info [main] Server started on port 9000
+2022-12-12 13:28:43,715 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "location_foreign_key"
+  Подробности: Ключ (location_id)=(1) отсутствует в таблице "locations".
+2022-12-12 13:28:43,844 INFO info [main] Server started on port 9000
+2022-12-12 13:29:04,706 INFO info [main] OK
+2022-12-12 13:29:04,831 INFO info [main] Server started on port 9000
+2022-12-12 14:36:47,955 INFO info [main] Server started on port 9000
+2022-12-12 14:38:23,404 INFO info [main] Received new request from /192.168.56.1:51380
+2022-12-12 14:38:23,405 INFO info [main] Request: command: help; args: []
+2022-12-12 14:38:23,407 INFO info [main] Request was sent to address /192.168.56.1:51380
+2022-12-12 14:38:23,407 INFO info [main] Request: success: true; content: add                           ...
+2022-12-12 14:38:39,591 INFO info [main] Received new request from /192.168.56.1:51380
+2022-12-12 14:38:39,592 INFO info [main] Request: command: add; args: []
+2022-12-12 14:38:39,964 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-12 14:38:40,008 INFO info [main] Operation was executed successfully
+2022-12-12 14:38:40,009 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-12 14:38:40,020 INFO info [main] Operation was executed successfully
+2022-12-12 14:38:40,020 INFO info [main] Request was sent to address /192.168.56.1:51380
+2022-12-12 14:38:40,021 INFO info [main] Request: success: true; content: Successfully added element to ...

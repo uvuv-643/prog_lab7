@@ -11,7 +11,9 @@ public enum SQLQuery {
     PERSON_READ_ALL("person/read_all.sql"),
     PERSON_REMOVE_BY_ID("person/remove_by_id.sql"),
     PERSON_REORDER("person/reorder.sql"),
-    PERSON_UPDATE("person/update.sql");
+    PERSON_UPDATE("person/update.sql"),
+    LOCATION_CREATE("location/create.sql"),
+    COORDINATE_CREATE("coordinate/create.sql");
 
     private Path path;
     private final static String PATH_TO_SCRIPTS = "./Server/src/main/java/Services/SQL/query";

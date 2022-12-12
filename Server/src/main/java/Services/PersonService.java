@@ -1,8 +1,10 @@
 package Services;
 
 import DAOPattern.PersonDAO;
+import Entities.Color;
 import Entities.Country;
 import Entities.Person;
+import Services.SQL.SQLManager;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +19,14 @@ public class PersonService implements PersonDAO {
 
     @Override
     public boolean create(Person person, long userId) {
-        return false;
+        Optional<Long> coordinateId = SQLManager.executeQueryCoordinateCreate(person.getCoordinates());
+        Optional<Long> locationId = SQLManager.executeQueryLocationCreate(person.getLocation());
+        Optional<Long> personId = Optional.empty();
+        if (coordinateId.isPresent()) {
+            Long actualLocationId = locationId.orElse(null);
+            personId = SQLManager.executeQueryPersonCreate(coordinateId.get(), person.getHeight(),  person.getWeight(), person.getEyeColor(), person.getNationality(), actualLocationId, userId);
+        }
+        return personId.isPresent();
     }
 
     @Override

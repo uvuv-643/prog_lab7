@@ -9,6 +9,7 @@ import Input.Validation.CustomValidators.IDValidator;
 import Input.Validation.CustomValidators.IndexValidator;
 import Input.Validation.CustomValidators.NationalityValidator;
 import Output.OutputManager;
+import Services.PersonService;
 import Services.Request;
 import Services.Response;
 
@@ -85,6 +86,8 @@ public class Receiver {
             long generatedId = idGenerator.generate();
             Person personValidated = Person.personCreator(person, generatedId);
             collection.add(personValidated);
+            PersonService personService = new PersonService();
+            personService.create(personValidated, 2);
             responseText.append("Successfully added element to collection.");
             return (new Response(true, responseText.toString()));
         } catch (ValidationException exception) {
