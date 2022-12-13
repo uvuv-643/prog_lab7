@@ -64,7 +64,7 @@ public class IDValidator implements Validator {
      * @throws ValidationException - выбрасывается, если ID является уникальным
      */
     public ValidatedData<Long> validateNotUnique(Long id, Long userId) throws ValidationException {
-        boolean isUnique = personService.checkById(id, userId);
+        boolean isUnique = !personService.checkById(id, userId);
         if (isUnique) {
             throw new ValidationException("ID is unique");
         }

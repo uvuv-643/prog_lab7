@@ -1,98 +1,455 @@
-2022-12-12 00:24:44,695 INFO info [main] Server started on port 9000
-2022-12-12 00:27:10,173 INFO info [main] Server started on port 9000
-2022-12-12 00:29:51,337 INFO info [main] Server started on port 9000
-2022-12-12 00:33:27,711 INFO info [main] Server started on port 9000
-2022-12-12 00:35:04,807 INFO info [main] Server started on port 9000
-2022-12-12 00:35:31,086 INFO info [main] Server started on port 9000
-2022-12-12 00:36:56,930 INFO info [main] Server started on port 9000
-2022-12-12 00:38:37,294 INFO info [main] Server started on port 9000
-2022-12-12 13:14:45,325 INFO info [main] No suitable driver found for jdbc:postgresql://localhost:5433/postgres Cannot create connection
-2022-12-12 13:18:14,457 INFO info [main] Server started on port 9000
-2022-12-12 13:19:34,281 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "country_id" в таблице "persons" не существует
-  Позиция: 87
-2022-12-12 13:19:34,414 INFO info [main] Server started on port 9000
-2022-12-12 13:20:04,734 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
+2022-12-13 18:40:14,139 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:40:14,209 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: отношение "countries" не существует
+  Позиция: 408
+2022-12-13 18:40:14,419 INFO info [main] Server started on port 9000
+2022-12-13 18:44:44,130 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:44:44,182 INFO info [main] Operation was executed successfully
+2022-12-13 18:44:44,196 INFO info [main] SQL error. org.postgresql.util.PSQLException: Колонки created_at не найдено в этом ResultSet’’е.
+2022-12-13 18:44:44,224 INFO info [main] Server started on port 9000
+2022-12-13 18:45:14,956 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:45:14,957 INFO info [main] Request: command: help; args: []
+2022-12-13 18:45:14,957 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:45:14,967 INFO info [main] admin; admin
+2022-12-13 18:45:14,972 INFO info [main] Operation was executed successfully
+2022-12-13 18:45:14,975 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:45:14,976 INFO info [main] Request: success: true; content: add                           ...
+2022-12-13 18:45:15,978 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:45:15,978 INFO info [main] Request: command: show; args: []
+2022-12-13 18:45:15,978 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:45:15,979 INFO info [main] admin; admin
+2022-12-13 18:45:15,981 INFO info [main] Operation was executed successfully
+2022-12-13 18:45:15,981 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:45:15,981 INFO info [main] Request: success: true; content: Collection is empty 
+2022-12-13 18:46:14,299 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:46:14,347 INFO info [main] Operation was executed successfully
+2022-12-13 18:47:17,245 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:47:17,275 INFO info [main] Operation was executed successfully
+2022-12-13 18:47:17,294 INFO info [main] Server started on port 9000
+2022-12-13 18:47:21,443 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:47:21,444 INFO info [main] Request: command: show; args: []
+2022-12-13 18:47:21,444 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:47:21,446 INFO info [main] admin; admin
+2022-12-13 18:47:21,451 INFO info [main] Operation was executed successfully
+2022-12-13 18:47:21,473 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:47:21,474 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 18:53:44,577 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:53:44,610 INFO info [main] Operation was executed successfully
+2022-12-13 18:53:44,636 INFO info [main] Server started on port 9000
+2022-12-13 18:54:07,272 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:54:07,273 INFO info [main] Request: command: add; args: []
+2022-12-13 18:54:07,273 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:54:07,274 INFO info [main] admin; admin
+2022-12-13 18:54:07,280 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:07,282 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 18:54:07,298 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:07,299 INFO info [main] Attempt to execute <execute_query_location_create>
+2022-12-13 18:54:07,307 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:07,307 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 18:54:07,318 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:07,319 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:54:07,320 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 18:54:09,088 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:54:09,088 INFO info [main] Request: command: show; args: []
+2022-12-13 18:54:09,089 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:54:09,089 INFO info [main] admin; admin
+2022-12-13 18:54:09,090 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:09,109 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:54:09,109 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 18:54:29,297 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 18:54:29,347 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:29,351 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:29,380 INFO info [main] Server started on port 9000
+2022-12-13 18:54:44,885 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:54:44,886 INFO info [main] Request: command: show; args: []
+2022-12-13 18:54:44,886 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:54:44,888 INFO info [main] admin; admin
+2022-12-13 18:54:44,892 INFO info [main] Operation was executed successfully
+2022-12-13 18:54:44,913 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:54:44,914 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 18:57:28,894 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:57:28,894 INFO info [main] Request: command: add; args: []
+2022-12-13 18:57:28,894 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:57:28,895 INFO info [main] admin; admin
+2022-12-13 18:57:28,895 INFO info [main] Operation was executed successfully
+2022-12-13 18:57:28,896 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 18:57:28,901 INFO info [main] Operation was executed successfully
+2022-12-13 18:57:28,901 INFO info [main] Attempt to execute <execute_query_location_create>
+2022-12-13 18:57:28,904 INFO info [main] Operation was executed successfully
+2022-12-13 18:57:28,904 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 18:57:28,908 INFO info [main] Operation was executed successfully
+2022-12-13 18:57:28,908 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:57:28,908 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 18:57:30,587 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 18:57:30,588 INFO info [main] Request: command: show; args: []
+2022-12-13 18:57:30,588 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 18:57:30,589 INFO info [main] admin; admin
+2022-12-13 18:57:30,590 INFO info [main] Operation was executed successfully
+2022-12-13 18:57:30,592 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 18:57:30,592 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 19:40:43,982 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 19:40:44,025 INFO info [main] Operation was executed successfully
+2022-12-13 19:40:44,029 INFO info [main] Operation was executed successfully
+2022-12-13 19:40:44,029 INFO info [main] Operation was executed successfully
+2022-12-13 19:40:44,071 INFO info [main] Server started on port 9000
+2022-12-13 19:41:01,423 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:41:01,423 INFO info [main] Request: command: show; args: []
+2022-12-13 19:41:01,424 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:41:01,426 INFO info [main] admin; admin
+2022-12-13 19:41:01,431 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:01,455 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:41:01,456 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 19:41:13,300 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:41:13,300 INFO info [main] Request: command: update; args: [1]
+2022-12-13 19:41:13,300 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:41:13,301 INFO info [main] admin; admin
+2022-12-13 19:41:13,302 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:13,302 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:41:13,314 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:13,315 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:41:13,315 INFO info [main] Request: success: false; content: Passed incorrect ID
+2022-12-13 19:41:49,676 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:41:49,677 INFO info [main] Request: command: show; args: []
+2022-12-13 19:41:49,677 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:41:49,678 INFO info [main] admin; admin
+2022-12-13 19:41:49,679 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:49,682 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:41:49,682 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 19:41:59,393 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:41:59,393 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:41:59,393 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:41:59,394 INFO info [main] admin; admin
+2022-12-13 19:41:59,395 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:59,395 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:41:59,397 INFO info [main] Operation was executed successfully
+2022-12-13 19:41:59,397 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:41:59,397 INFO info [main] Request: success: false; content: Passed incorrect ID
+2022-12-13 19:43:00,199 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 19:43:00,258 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:00,263 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:00,264 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:00,299 INFO info [main] Server started on port 9000
+2022-12-13 19:43:05,600 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:43:05,601 INFO info [main] Request: command: show; args: []
+2022-12-13 19:43:05,601 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:43:05,603 INFO info [main] admin; admin
+2022-12-13 19:43:05,607 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:05,626 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:43:05,627 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 19:43:12,211 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:43:12,212 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:43:12,212 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:43:12,212 INFO info [main] admin; admin
+2022-12-13 19:43:12,213 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:12,218 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:43:12,221 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:12,222 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:43:12,222 INFO info [main] Request: success: false; content: Passed incorrect ID
+2022-12-13 19:43:52,927 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:43:52,927 INFO info [main] Request: command: update; args: [1]
+2022-12-13 19:43:52,927 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:43:52,928 INFO info [main] admin; admin
+2022-12-13 19:43:52,929 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:52,929 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:43:52,931 INFO info [main] Operation was executed successfully
+2022-12-13 19:43:52,931 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:43:52,932 INFO info [main] Request: success: false; content: Passed incorrect ID
+2022-12-13 19:44:20,726 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:44:20,726 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:44:20,726 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:44:20,727 INFO info [main] admin; admin
+2022-12-13 19:44:20,727 INFO info [main] Operation was executed successfully
+2022-12-13 19:44:20,728 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:44:20,738 INFO info [main] Operation was executed successfully
+2022-12-13 19:44:20,738 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:44:20,738 INFO info [main] Request: success: false; content: Passed incorrect ID
+2022-12-13 19:44:28,274 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:44:28,274 INFO info [main] Request: command: update; args: [1]
+2022-12-13 19:44:28,275 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:44:28,275 INFO info [main] admin; admin
+2022-12-13 19:44:28,276 INFO info [main] Operation was executed successfully
+2022-12-13 19:44:28,277 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:44:28,278 INFO info [main] Cannot execute operation.
+2022-12-13 19:44:28,279 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 19:44:28,284 INFO info [main] Operation was executed successfully
+2022-12-13 19:44:28,284 INFO info [main] Attempt to execute <execute_query_person_update>
+2022-12-13 19:44:28,308 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
   Подсказка: Перепишите выражение или преобразуйте его тип.
-  Позиция: 171
-2022-12-12 13:20:04,866 INFO info [main] Server started on port 9000
-2022-12-12 13:20:52,656 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
+  Позиция: 111
+2022-12-13 19:44:28,308 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:44:28,308 INFO info [main] Request: success: false; content: You cannot update this element
+2022-12-13 19:46:00,357 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 19:46:00,401 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:00,404 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:00,405 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:00,434 INFO info [main] Server started on port 9000
+2022-12-13 19:46:15,853 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:46:15,853 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:46:15,853 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:46:15,855 INFO info [main] admin; admin
+2022-12-13 19:46:15,859 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:15,861 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:46:15,864 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:15,865 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 19:46:15,868 INFO info [main] Operation was executed successfully
+2022-12-13 19:46:15,868 INFO info [main] Attempt to execute <execute_query_person_update>
+2022-12-13 19:46:15,886 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - character varying
   Подсказка: Перепишите выражение или преобразуйте его тип.
-  Позиция: 171
-2022-12-12 13:20:52,785 INFO info [main] Server started on port 9000
-2022-12-12 13:21:37,064 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: столбец "color" имеет тип color, а выражение - integer
+  Позиция: 111
+2022-12-13 19:46:15,887 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:46:15,888 INFO info [main] Request: success: false; content: You cannot update this element
+2022-12-13 19:47:32,582 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:47:32,582 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:47:32,582 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:47:32,583 INFO info [main] admin; admin
+2022-12-13 19:47:32,585 INFO info [main] Operation was executed successfully
+2022-12-13 19:47:32,585 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:47:32,586 INFO info [main] Operation was executed successfully
+2022-12-13 19:47:32,587 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 19:47:32,588 INFO info [main] Operation was executed successfully
+2022-12-13 19:47:32,589 INFO info [main] Attempt to execute <execute_query_person_update>
+2022-12-13 19:47:32,616 INFO info [main] SQL error. org.postgresql.util.PSQLException: Запрос не вернул результатов.
+2022-12-13 19:47:32,616 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:47:32,616 INFO info [main] Request: success: false; content: You cannot update this element
+2022-12-13 19:48:00,674 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 19:48:00,675 INFO info [main] Request: command: update; args: [5]
+2022-12-13 19:48:00,675 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 19:48:00,676 INFO info [main] admin; admin
+2022-12-13 19:48:00,677 INFO info [main] Operation was executed successfully
+2022-12-13 19:48:00,677 INFO info [main] Attempt to execute <execute_query_person_check_by_id>
+2022-12-13 19:48:00,679 INFO info [main] Operation was executed successfully
+2022-12-13 19:48:00,680 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 19:48:00,681 INFO info [main] Operation was executed successfully
+2022-12-13 19:48:00,682 INFO info [main] Attempt to execute <execute_query_person_update>
+2022-12-13 19:48:00,690 INFO info [main] Operation was executed successfully
+2022-12-13 19:48:00,690 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 19:48:00,690 INFO info [main] Request: success: true; content: 
+2022-12-13 20:01:12,366 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:01:12,404 INFO info [main] Operation was executed successfully
+2022-12-13 20:01:12,428 INFO info [main] Server started on port 9000
+2022-12-13 20:01:23,276 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:01:23,277 INFO info [main] Request: command: show; args: []
+2022-12-13 20:01:23,277 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 20:01:23,278 INFO info [main] admin; admin
+2022-12-13 20:01:23,283 INFO info [main] Operation was executed successfully
+2022-12-13 20:01:23,306 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:01:23,307 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 20:01:27,017 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:01:27,017 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:01:27,018 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 20:01:27,018 INFO info [main] admin; admin
+2022-12-13 20:01:27,019 INFO info [main] Operation was executed successfully
+2022-12-13 20:01:27,020 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:01:27,020 INFO info [main] Request: success: false; content: You cannot clear your collecti...
+2022-12-13 20:03:28,489 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:03:28,528 INFO info [main] Operation was executed successfully
+2022-12-13 20:03:28,550 INFO info [main] Server started on port 9000
+2022-12-13 20:03:31,721 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:03:31,721 INFO info [main] Request: command: show; args: []
+2022-12-13 20:03:31,722 INFO info [main] Attempt to execute <execute_query_user_create>
+2022-12-13 20:03:31,722 INFO info [main] admin; admin
+2022-12-13 20:03:31,727 INFO info [main] Operation was executed successfully
+2022-12-13 20:03:31,744 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:03:31,745 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 20:04:07,499 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:04:07,565 INFO info [main] Operation was executed successfully
+2022-12-13 20:04:07,597 INFO info [main] Server started on port 9000
+2022-12-13 20:04:16,195 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:04:16,234 INFO info [main] Operation was executed successfully
+2022-12-13 20:04:16,258 INFO info [main] Server started on port 9000
+2022-12-13 20:04:20,420 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:04:20,421 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:04:20,421 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:04:20,425 INFO info [main] Operation was executed successfully
+2022-12-13 20:04:20,428 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:04:20,446 INFO info [main] SQL error. org.postgresql.util.PSQLException: Запрос не вернул результатов.
+2022-12-13 20:04:20,447 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:04:20,447 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 20:05:13,564 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:05:13,564 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:05:13,564 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:05:13,566 INFO info [main] Operation was executed successfully
+2022-12-13 20:05:13,566 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:05:13,578 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: агрегатные функции нельзя применять в конструкции RETURNING
+  Позиция: 51
+2022-12-13 20:05:13,578 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:05:13,578 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 20:05:31,947 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:05:31,948 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:05:31,948 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:05:31,949 INFO info [main] Operation was executed successfully
+2022-12-13 20:05:31,950 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:05:31,956 INFO info [main] Cannot execute operation.
+2022-12-13 20:05:31,956 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:05:31,956 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 20:08:52,980 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:08:53,020 INFO info [main] Operation was executed successfully
+2022-12-13 20:08:53,041 INFO info [main] Server started on port 9000
+2022-12-13 20:08:57,159 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:08:57,160 INFO info [main] Request: command: show; args: []
+2022-12-13 20:08:57,160 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:08:57,165 INFO info [main] Operation was executed successfully
+2022-12-13 20:08:57,185 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:08:57,185 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 20:09:00,767 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:09:00,767 INFO info [main] Request: command: clear; args: []
+2022-12-13 20:09:00,767 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:09:00,769 INFO info [main] Operation was executed successfully
+2022-12-13 20:09:00,769 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:09:00,783 INFO info [main] SQL error. org.postgresql.util.PSQLException: Результат возвращён когда его не ожидалось.
+2022-12-13 20:09:00,783 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:09:00,784 INFO info [main] Request: success: false; content: Unable to clear collection
+2022-12-13 20:09:05,904 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:09:05,904 INFO info [main] Request: command: add; args: []
+2022-12-13 20:09:05,904 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:09:05,906 INFO info [main] Operation was executed successfully
+2022-12-13 20:09:05,907 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 20:09:05,910 INFO info [main] Operation was executed successfully
+2022-12-13 20:09:05,911 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 20:09:05,914 INFO info [main] Operation was executed successfully
+2022-12-13 20:09:05,915 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:09:05,915 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 20:09:07,174 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:09:07,175 INFO info [main] Request: command: clear; args: []
+2022-12-13 20:09:07,175 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:09:07,176 INFO info [main] Operation was executed successfully
+2022-12-13 20:09:07,176 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:09:07,178 INFO info [main] SQL error. org.postgresql.util.PSQLException: Результат возвращён когда его не ожидалось.
+2022-12-13 20:09:07,178 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:09:07,178 INFO info [main] Request: success: false; content: Unable to clear collection
+2022-12-13 20:10:23,406 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:10:23,456 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:23,483 INFO info [main] Server started on port 9000
+2022-12-13 20:10:24,275 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:10:24,276 INFO info [main] Request: command: show; args: []
+2022-12-13 20:10:24,276 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:10:24,281 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:24,297 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:10:24,298 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 20:10:37,694 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:10:37,694 INFO info [main] Request: command: add; args: []
+2022-12-13 20:10:37,694 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:10:37,696 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:37,696 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 20:10:37,701 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:37,701 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 20:10:37,704 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:37,704 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:10:37,704 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 20:10:44,601 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:10:44,601 INFO info [main] Request: command: clear; args: []
+2022-12-13 20:10:44,601 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:10:44,603 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:44,603 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:10:44,606 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:44,606 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:10:44,606 INFO info [main] Request: success: true; content: 
+2022-12-13 20:10:51,180 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:10:51,180 INFO info [main] Request: command: clear; args: []
+2022-12-13 20:10:51,181 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:10:51,182 INFO info [main] Operation was executed successfully
+2022-12-13 20:10:51,182 INFO info [main] Attempt to execute <execute_query_person_clear>
+2022-12-13 20:10:51,183 INFO info [main] Cannot execute operation.
+2022-12-13 20:10:51,184 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:10:51,184 INFO info [main] Request: success: false; content: Unable to clear collection
+2022-12-13 20:11:03,245 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:11:03,245 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:11:03,245 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:11:03,246 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:03,247 INFO info [main] Attempt to execute <execute_query_person_reorder>
+2022-12-13 20:11:03,257 INFO info [main] Cannot execute operation.
+2022-12-13 20:11:03,257 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:11:03,257 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 20:11:14,078 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:11:14,078 INFO info [main] Request: command: add; args: []
+2022-12-13 20:11:14,078 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:11:14,080 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:14,080 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 20:11:14,082 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:14,082 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 20:11:14,084 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:14,084 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:11:14,084 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 20:11:23,326 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:11:23,327 INFO info [main] Request: command: add; args: []
+2022-12-13 20:11:23,327 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:11:23,328 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:23,329 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 20:11:23,330 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:23,331 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 20:11:23,332 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:23,333 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:11:23,333 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 20:11:28,866 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:11:28,867 INFO info [main] Request: command: add; args: []
+2022-12-13 20:11:28,867 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:11:28,868 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:28,869 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 20:11:28,871 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:28,871 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 20:11:28,873 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:28,873 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:11:28,873 INFO info [main] Request: success: true; content: Successfully added element to ...
+2022-12-13 20:11:36,154 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:11:36,154 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:11:36,155 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:11:36,156 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:36,156 INFO info [main] Attempt to execute <execute_query_person_reorder>
+2022-12-13 20:11:36,163 INFO info [main] Operation was executed successfully
+2022-12-13 20:11:36,164 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:11:36,164 INFO info [main] Request: success: true; content: Successfully cleared
+2022-12-13 20:12:00,331 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 20:12:00,331 INFO info [main] Request: command: reorder; args: []
+2022-12-13 20:12:00,331 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 20:12:00,332 INFO info [main] Operation was executed successfully
+2022-12-13 20:12:00,333 INFO info [main] Attempt to execute <execute_query_person_reorder>
+2022-12-13 20:12:00,335 INFO info [main] Operation was executed successfully
+2022-12-13 20:12:00,335 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 20:12:00,335 INFO info [main] Request: success: true; content: Successfully cleared
+2022-12-13 20:59:09,596 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 20:59:09,647 INFO info [main] SQL error. org.postgresql.util.PSQLException: Колонки userId не найдено в этом ResultSet’’е.
+2022-12-13 20:59:09,671 INFO info [main] Server started on port 9000
+2022-12-13 21:01:11,495 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 21:01:11,544 INFO info [main] Operation was executed successfully
+2022-12-13 21:01:11,565 INFO info [main] Server started on port 9000
+2022-12-13 21:01:15,414 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 21:01:15,415 INFO info [main] Request: command: show; args: []
+2022-12-13 21:01:15,415 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 21:01:15,418 INFO info [main] Operation was executed successfully
+2022-12-13 21:01:15,441 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 21:01:15,442 INFO info [main] Request: success: true; content: Elements in collection:  ID: 3...
+2022-12-13 21:01:22,960 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 21:01:22,960 INFO info [main] Request: command: reorder; args: []
+2022-12-13 21:01:22,960 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 21:01:22,961 INFO info [main] Operation was executed successfully
+2022-12-13 21:01:22,967 INFO info [main] Attempt to execute <execute_query_person_reorder>
+2022-12-13 21:01:22,997 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: столбец "person_order" имеет тип integer, а выражение - integer[]
   Подсказка: Перепишите выражение или преобразуйте его тип.
-  Позиция: 171
-2022-12-12 13:21:37,206 INFO info [main] Server started on port 9000
-2022-12-12 13:24:12,324 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: привести тип integer к color нельзя
-  Позиция: 173
-2022-12-12 13:24:12,449 INFO info [main] Server started on port 9000
-2022-12-12 13:24:31,082 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "location_foreign_key"
-  Подробности: Ключ (location_id)=(1) отсутствует в таблице "locations".
-2022-12-12 13:24:31,223 INFO info [main] Server started on port 9000
-2022-12-12 13:25:30,934 INFO info [main] SQL org.postgresql.util.PSQLException: Запрос не вернул результатов.
-2022-12-12 13:25:31,063 INFO info [main] Server started on port 9000
-2022-12-12 13:26:24,675 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: привести тип integer к country нельзя
-  Позиция: 189
-2022-12-12 13:26:24,802 INFO info [main] Server started on port 9000
-2022-12-12 13:26:41,120 INFO info [main] SQL org.postgresql.util.PSQLException: Запрос не вернул результатов.
-2022-12-12 13:26:41,273 INFO info [main] Server started on port 9000
-2022-12-12 13:28:43,715 INFO info [main] SQL org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "location_foreign_key"
-  Подробности: Ключ (location_id)=(1) отсутствует в таблице "locations".
-2022-12-12 13:28:43,844 INFO info [main] Server started on port 9000
-2022-12-12 13:29:04,706 INFO info [main] OK
-2022-12-12 13:29:04,831 INFO info [main] Server started on port 9000
-2022-12-12 14:36:47,955 INFO info [main] Server started on port 9000
-2022-12-12 14:38:23,404 INFO info [main] Received new request from /192.168.56.1:51380
-2022-12-12 14:38:23,405 INFO info [main] Request: command: help; args: []
-2022-12-12 14:38:23,407 INFO info [main] Request was sent to address /192.168.56.1:51380
-2022-12-12 14:38:23,407 INFO info [main] Request: success: true; content: add                           ...
-2022-12-12 14:38:39,591 INFO info [main] Received new request from /192.168.56.1:51380
-2022-12-12 14:38:39,592 INFO info [main] Request: command: add; args: []
-2022-12-12 14:38:39,964 INFO info [main] Attempt to execute <execute_query_coordinate_create>
-2022-12-12 14:38:40,008 INFO info [main] Operation was executed successfully
-2022-12-12 14:38:40,009 INFO info [main] Attempt to execute <execute_query_person_create>
-2022-12-12 14:38:40,020 INFO info [main] Operation was executed successfully
-2022-12-12 14:38:40,020 INFO info [main] Request was sent to address /192.168.56.1:51380
-2022-12-12 14:38:40,021 INFO info [main] Request: success: true; content: Successfully added element to ...
-2022-12-12 14:44:07,075 INFO info [main] Received new request from /192.168.56.1:51380
-2022-12-12 14:44:07,075 INFO info [main] Request: command: add; args: []
-2022-12-12 14:44:07,076 INFO info [main] Attempt to execute <execute_query_coordinate_create>
-2022-12-12 14:44:07,077 INFO info [main] Operation was executed successfully
-2022-12-12 14:44:07,077 INFO info [main] Attempt to execute <execute_query_location_create>
-2022-12-12 14:44:07,091 INFO info [main] Operation was executed successfully
-2022-12-12 14:44:07,091 INFO info [main] Attempt to execute <execute_query_person_create>
-2022-12-12 14:44:07,093 INFO info [main] Operation was executed successfully
-2022-12-12 14:44:07,094 INFO info [main] Request was sent to address /192.168.56.1:51380
-2022-12-12 14:44:07,094 INFO info [main] Request: success: true; content: Successfully added element to ...
-2022-12-12 14:53:51,681 INFO info [main] Received new request from /192.168.56.1:51380
-2022-12-12 14:53:51,681 INFO info [main] Request: command: add; args: []
-2022-12-12 14:53:51,681 INFO info [main] Attempt to execute <execute_query_coordinate_create>
-2022-12-12 14:53:51,685 INFO info [main] Operation was executed successfully
-2022-12-12 14:53:51,686 INFO info [main] Attempt to execute <execute_query_location_create>
-2022-12-12 14:53:51,689 INFO info [main] Operation was executed successfully
-2022-12-12 14:53:51,689 INFO info [main] Attempt to execute <execute_query_person_create>
-2022-12-12 14:53:51,709 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "user_id_foreign_key"
-  Подробности: Ключ (user_id)=(2) отсутствует в таблице "users".
-2022-12-12 14:53:51,709 INFO info [main] Request was sent to address /192.168.56.1:51380
-2022-12-12 14:53:51,710 INFO info [main] Request: success: true; content: Successfully added element to ...
-2022-12-12 14:55:31,301 INFO info [main] Server started on port 9000
-2022-12-12 14:55:46,186 INFO info [main] Received new request from /192.168.56.1:56032
-2022-12-12 14:55:46,187 INFO info [main] Request: command: add; args: []
-2022-12-12 14:55:46,582 INFO info [main] Attempt to execute <execute_query_coordinate_create>
-2022-12-12 14:55:46,613 INFO info [main] Operation was executed successfully
-2022-12-12 14:55:46,614 INFO info [main] Attempt to execute <execute_query_location_create>
-2022-12-12 14:55:46,618 INFO info [main] Operation was executed successfully
-2022-12-12 14:55:46,619 INFO info [main] Attempt to execute <execute_query_person_create>
-2022-12-12 14:55:46,645 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: INSERT или UPDATE в таблице "persons" нарушает ограничение внешнего ключа "user_id_foreign_key"
-  Подробности: Ключ (user_id)=(2) отсутствует в таблице "users".
-2022-12-12 14:55:46,645 INFO info [main] Request was sent to address /192.168.56.1:56032
-2022-12-12 14:55:46,647 INFO info [main] Request: success: true; content: Successfully added element to ...
-2022-12-12 22:31:06,237 INFO info [main] Server started on port 9000
-2022-12-12 22:31:18,995 INFO info [main] Received new request from /192.168.56.1:54380
-2022-12-12 22:31:18,996 INFO info [main] Request: command: help; args: []
-2022-12-12 22:31:18,997 INFO info [main] Request was sent to address /192.168.56.1:54380
-2022-12-12 22:31:18,998 INFO info [main] Request: success: false; content: Failed to login
-2022-12-12 22:33:50,905 INFO info [main] Received new request from /192.168.56.1:56306
-2022-12-12 22:33:50,905 INFO info [main] Request: command: info; args: []
-2022-12-12 22:33:50,905 INFO info [main] Request was sent to address /192.168.56.1:56306
-2022-12-12 22:33:50,906 INFO info [main] Request: success: false; content: Failed to login
+  Позиция: 36
+2022-12-13 21:01:22,997 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 21:01:22,997 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 21:05:53,286 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 21:05:53,342 INFO info [main] Operation was executed successfully
+2022-12-13 21:05:53,372 INFO info [main] Server started on port 9000
+2022-12-13 21:05:55,639 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 21:05:55,640 INFO info [main] Request: command: reorder; args: []
+2022-12-13 21:05:55,640 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 21:05:55,643 INFO info [main] Operation was executed successfully
+2022-12-13 21:05:55,649 INFO info [main] Attempt to execute <execute_query_person_reorder>
+2022-12-13 21:05:55,670 INFO info [main] SQL error. org.postgresql.util.PSQLException: ОШИБКА: столбец "person_order" имеет тип integer, а выражение - integer[]
+  Подсказка: Перепишите выражение или преобразуйте его тип.
+  Позиция: 36
+2022-12-13 21:05:55,670 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 21:05:55,671 INFO info [main] Request: success: false; content: You cannot reorder your collec...
+2022-12-13 21:35:36,242 INFO info [main] Attempt to execute <execute_query_read_all>
+2022-12-13 21:35:36,291 INFO info [main] Operation was executed successfully
+2022-12-13 21:35:36,311 INFO info [main] Server started on port 9000
+2022-12-13 21:42:41,681 INFO info [main] Received new request from /192.168.56.1:50371
+2022-12-13 21:42:41,682 INFO info [main] Request: command: add; args: []
+2022-12-13 21:42:41,682 INFO info [main] Attempt to execute <execute_query_user_check>
+2022-12-13 21:42:41,686 INFO info [main] Operation was executed successfully
+2022-12-13 21:42:41,689 INFO info [main] Attempt to execute <execute_query_coordinate_create>
+2022-12-13 21:42:41,693 INFO info [main] Operation was executed successfully
+2022-12-13 21:42:41,693 INFO info [main] Attempt to execute <execute_query_person_create>
+2022-12-13 21:42:41,697 INFO info [main] Operation was executed successfully
+2022-12-13 21:42:41,697 INFO info [main] Request was sent to address /192.168.56.1:50371
+2022-12-13 21:42:41,698 INFO info [main] Request: success: true; content: Successfully added element to ...

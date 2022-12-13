@@ -1,4 +1,5 @@
 INSERT INTO persons (
+    name,
     coordinates_id,
     height,
     weight,
@@ -7,6 +8,7 @@ INSERT INTO persons (
     location_id,
     user_id
 ) VALUES (
+    ?,
     ?,
     ?,
     ?,

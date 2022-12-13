@@ -35,7 +35,7 @@ public class Main {
             System.out.println("You have to export env path of initial collection before starting working");
             System.exit(0);
         }
-        Receiver receiver = new Receiver(collection);
+        Receiver receiver = new Receiver();
         Invoker invoker = new Invoker(receiver);
         Server server = new Server();
 

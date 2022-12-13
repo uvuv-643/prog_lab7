@@ -1,2 +1,2 @@
-SELECT COUNT(*) FROM users WHERE
+SELECT * FROM users WHERE
 login = ? and password = ?

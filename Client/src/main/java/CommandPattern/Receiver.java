@@ -37,7 +37,7 @@ public class Receiver {
      * @return Request - запрос, который может быть отправлен на сервер
      */
     public Optional<Request> info() {
-        return Optional.of(new Request("info", new LoginCredentials("123", "321")));
+        return Optional.of(new Request("info"));
     }
 
     /**

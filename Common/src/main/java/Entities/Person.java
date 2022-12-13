@@ -3,7 +3,6 @@ package Entities;
 import Exceptions.ValidationException;
 import Input.Validation.CustomValidators.*;
 
-import javax.sound.midi.Receiver;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -27,6 +26,8 @@ public class Person implements Comparable<Person>, Serializable {
     private Color eyeColor; //Поле не может быть null
     private Country nationality; //Поле может быть null
     private Location location; //Поле может быть null
+    private Long userId;
+    private String userLogin;
 
 
     private static final NameValidator nameValidator = new NameValidator();
@@ -37,7 +38,7 @@ public class Person implements Comparable<Person>, Serializable {
     private static final NationalityValidator nationalityValidator = new NationalityValidator();
     private static final LocationValidator locationValidator = new LocationValidator();
 
-    private Person(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, int height, float weight, Color eyeColor, Country nationality, Location location) {
+    private Person(Long id, String name, Coordinates coordinates, ZonedDateTime creationDate, int height, float weight, Color eyeColor, Country nationality, Location location, Long userId, String userLogin) {
         this.id = id;
         this.name = name;
         this.coordinates = coordinates;
@@ -47,10 +48,16 @@ public class Person implements Comparable<Person>, Serializable {
         this.eyeColor = eyeColor;
         this.nationality = nationality;
         this.location = location;
+        this.userId = userId;
+        this.userLogin = userLogin;
     }
 
     public static Person personCreator(String name, Coordinates coordinates, int height, float weight, Color eyeColor, Country nationality, Location location) {
-        return new Person(null, name, coordinates, null, height, weight, eyeColor, nationality, location);
+        return new Person(null, name, coordinates, null, height, weight, eyeColor, nationality, location, null, null);
+    }
+
+    public static Person personCreator(long id, String name, Coordinates coordinates, ZonedDateTime creationDate, int height, float weight, Color eyeColor, Country nationality, Location location, long userId, String userLogin) {
+        return new Person(id, name, coordinates, creationDate, height, weight, eyeColor, nationality, location, userId, userLogin);
     }
 
     public static Person personCreator(Person person) throws ValidationException {
@@ -62,18 +69,7 @@ public class Person implements Comparable<Person>, Serializable {
         eyeColorValidator.validate(person.getEyeColor());
         nationalityValidator.validate(person.getNationality());
         locationValidator.validate(person.getLocation());
-        return new Person(null, person.getName(), person.getCoordinates(), created_at, person.getHeight(), person.getWeight(), person.getEyeColor(), person.getNationality(), person.getLocation());
-    }
-
-    public static Person personUpdater(Person person, long generatedId, ZonedDateTime creationDate) throws ValidationException {
-        nameValidator.validate(person.getName());
-        coordinatesValidator.validate(person.getCoordinates());
-        heightValidator.validate(person.getHeight());
-        weightValidator.validate(person.getWeight());
-        eyeColorValidator.validate(person.getEyeColor());
-        nationalityValidator.validate(person.getNationality());
-        locationValidator.validate(person.getLocation());
-        return new Person(generatedId, person.getName(), person.getCoordinates(), creationDate, person.getHeight(), person.getWeight(), person.getEyeColor(), person.getNationality(), person.getLocation());
+        return new Person(null, person.getName(), person.getCoordinates(), created_at, person.getHeight(), person.getWeight(), person.getEyeColor(), person.getNationality(), person.getLocation(), person.getUserId(), person.getUserLogin());
     }
 
     public Long getId() {
@@ -179,10 +175,12 @@ public class Person implements Comparable<Person>, Serializable {
 
         String location;
         if (this.location != null) {
-            location = String.format("Location: %s", this.location);
+            location = String.format("Location: %s\n", this.location);
         } else {
-            location = "Location is not specified";
+            location = "Location is not specified\n";
         }
+
+        String owner = String.format("Created by: %s", this.userLogin);
 
         return  id +
                 name +
@@ -192,8 +190,24 @@ public class Person implements Comparable<Person>, Serializable {
                 weight +
                 eyeColor +
                 nationality +
-                location;
+                location +
+                owner;
 
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
 }

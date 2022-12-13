@@ -1,2 +1,2 @@
 INSERT INTO users (login, password)
-VALUES (?, ?);
+VALUES (?, ?) RETURNING id;

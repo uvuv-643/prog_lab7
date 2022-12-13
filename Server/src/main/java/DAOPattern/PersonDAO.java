@@ -19,7 +19,7 @@ public interface PersonDAO {
 
     boolean checkById(long personId, long userId);
 
-    boolean removeById(long personId, long userId);
+    boolean removeById(long personId);
 
     boolean reorder(long userId);
 

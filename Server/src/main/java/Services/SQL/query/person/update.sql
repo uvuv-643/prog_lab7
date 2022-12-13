@@ -1,9 +1,9 @@
 UPDATE persons SET
+    name = ?,
     coordinates_id = ?,
     height = ?,
     weight = ?,
-    color = ?,
-    country_id = (SELECT id FROM countries WHERE countries.country = ?),
+    color = ?::color,
+    country = ?::country,
     location_id = ?,
-    user_id = ?
 WHERE id = ?

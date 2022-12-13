@@ -14,12 +14,12 @@ import Output.OutputManager;
 import Services.*;
 
 import java.io.IOException;
+import java.security.KeyPair;
+import java.security.PublicKey;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * Класс, представляющий собой сущность исполнителя команд
@@ -42,11 +42,10 @@ public class Receiver {
 
     /**
      * Создание экземпляра исполнителя команд
-     * @param collection - коллекция, над которой выполняются команды
      */
-    public Receiver(ArrayList<Person> collection) {
+    public Receiver() {
         creationDate = ZonedDateTime.now();
-        this.collection = collection;
+        this.collection = new ArrayList<>(personService.readAll());
     }
 
     /**
@@ -124,8 +123,10 @@ public class Receiver {
                         collection.set(collection.indexOf(collectionPerson), personValidated);
                     }
                 }
+                return (new Response(true, responseText.toString()));
+            } else {
+                return (new Response(false, "You cannot update this element"));
             }
-            return (new Response(true, responseText.toString()));
         } catch (ValidationException exception) {
             responseText.append("Passed incorrect ID");
             return (new Response(false, responseText.toString()));
@@ -144,7 +145,7 @@ public class Receiver {
             id = idValidator.validate(idRaw).getValidatedData();
             idValidator.validateNotUnique(id, userId);
             try {
-                boolean isRemovedPerson = personService.removeById(id, userId);
+                boolean isRemovedPerson = personService.removeById(id);
                 if (isRemovedPerson) {
                     Optional<Person> elementInCollection = collection.stream().filter((element) -> element.getId().equals(id)).findFirst();
                     elementInCollection.ifPresent(collection::remove);
@@ -223,7 +224,7 @@ public class Receiver {
             index = indexValidator.validate(indexRaw).getValidatedData();
             Person personOnRemoving = collection.get(index);
             idValidator.validateNotUnique(personOnRemoving.getId(), userId);
-            boolean isRemoved = personService.removeById(personOnRemoving.getId(), userId);
+            boolean isRemoved = personService.removeById(personOnRemoving.getId());
             if (isRemoved) {
                 collection.remove(index);
                 return (new Response(true, responseText.toString()));
@@ -274,11 +275,16 @@ public class Receiver {
      * @return Response - ответ на запрос выполнения команды
      */
     public Response reorder(long userId) {
-        boolean isCleared = personService.clear(userId);
-        if (isCleared) {
+//        List<Integer> order = new ArrayList<>(IntStream.range(0, this.collection.size())
+//                .mapToObj(i -> new PersonOrderPair(this.collection.get(i), i))
+//                .filter(personOrderPair -> personOrderPair.getPerson().getUserId().equals(userId))
+//                .map(PersonOrderPair::getOrder).toList());
+//        Collections.reverse(order);
+        boolean isReordered = personService.reorder(userId);
+        if (isReordered) {
             return new Response(true, "Successfully cleared");
         } else {
-            return new Response(false, "You cannot clear your collection");
+            return new Response(false, "You cannot reorder your collection");
         }
     }
 

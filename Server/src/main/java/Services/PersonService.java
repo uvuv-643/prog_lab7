@@ -14,7 +14,7 @@ public class PersonService implements PersonDAO {
 
     @Override
     public List<Person> readAll() {
-        return null;
+        return SQLManager.executeQueryReadAll();
     }
 
     @Override
@@ -24,7 +24,7 @@ public class PersonService implements PersonDAO {
         Optional<Long> personId = Optional.empty();
         if (coordinateId.isPresent()) {
             Long actualLocationId = locationId.orElse(null);
-            personId = SQLManager.executeQueryPersonCreate(coordinateId.get(), person.getHeight(),  person.getWeight(), person.getEyeColor(), person.getNationality(), actualLocationId, userId);
+            personId = SQLManager.executeQueryPersonCreate(person.getName(), coordinateId.get(), person.getHeight(),  person.getWeight(), person.getEyeColor(), person.getNationality(), actualLocationId, userId);
         } else {
             System.out.println("Coordinates is null ???");
         }
@@ -33,27 +33,35 @@ public class PersonService implements PersonDAO {
 
     @Override
     public boolean updateById(long id, Person person, long userId) {
+        Optional<Long> coordinateId = SQLManager.executeQueryCoordinateCreate(person.getCoordinates());
+        Optional<Long> locationId = SQLManager.executeQueryLocationCreate(person.getLocation());
+        if (coordinateId.isPresent()) {
+            Long actualLocationId = locationId.orElse(null);
+            return SQLManager.executeQueryPersonUpdate(person.getName(), coordinateId.get(), person.getHeight(),  person.getWeight(), person.getEyeColor(), person.getNationality(), actualLocationId, id);
+        } else {
+            System.out.println("Coordinates is null ???");
+        }
         return false;
     }
 
     @Override
     public boolean clear(long userId) {
-        return false;
+        return SQLManager.executeQueryPersonClear(userId);
     }
 
     @Override
     public boolean checkById(long personId, long userId) {
-        return false;
+        return SQLManager.executeQueryPersonCheckById(personId, userId);
     }
 
     @Override
-    public boolean removeById(long personId, long userId) {
-        return false;
+    public boolean removeById(long personId) {
+        return SQLManager.executeQueryPersonRemoveById(personId);
     }
 
     @Override
     public boolean reorder(long userId) {
-        return false;
+        return SQLManager.executeQueryPersonReorder(userId);
     }
 
 }

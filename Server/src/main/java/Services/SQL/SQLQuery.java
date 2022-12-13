@@ -12,6 +12,8 @@ public enum SQLQuery {
     PERSON_REMOVE_BY_ID("person/remove_by_id.sql"),
     PERSON_REORDER("person/reorder.sql"),
     PERSON_UPDATE("person/update.sql"),
+    USER_CREATE("user/create.sql"),
+    USER_CHECK("user/check.sql"),
     LOCATION_CREATE("location/create.sql"),
     COORDINATE_CREATE("coordinate/create.sql");
 
