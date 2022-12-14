@@ -11,6 +11,9 @@ import java.util.Optional;
 
 public class PersonService implements PersonDAO {
 
+    public PersonService() {
+        SQLManager.initPerson();
+    }
 
     @Override
     public List<Person> readAll() {

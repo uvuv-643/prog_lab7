@@ -3,18 +3,23 @@ package Services.SQL;
 import Entities.*;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
 import Exceptions.ValidationException;
 import Input.Validation.CustomValidators.EyeColorValidator;
 import Input.Validation.CustomValidators.NationalityValidator;
+import Services.HashEncrypter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,25 +27,56 @@ public class SQLManager {
 
     private static final Logger logger = LogManager.getLogger("info");
     private final static Connection connection = getConnection();
-    private static final String DB_URL = "jdbc:postgresql://localhost:5433/postgres";
-    private static final String DB_USER = "postgres";
-    private static final String DB_PASSWORD = "ch4p72";
+    private static final String DB_URL = "jdbc:postgresql://pg:5432/studs";
+    private static String DB_USER;
+    private static String DB_PASSWORD;
 
     protected static Connection getConnection() {
+
         Connection connection = null;
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
             System.out.println("PostgresQL JDBC Driver is not found. Include it in your library path ");
             e.printStackTrace();
             return null;
         }
         try {
+            List<String> databaseCredentials = Files.readAllLines(Paths.get(".", "./sql/database.txt"));
+            DB_USER = databaseCredentials.get(0);
+            DB_PASSWORD = databaseCredentials.get(1);
+        } catch (IOException exception) {
+            logger.info("Cannot read database credentials from file. " + exception.getMessage());
+        }
+        try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException exception) {
-            logger.info(exception.getMessage() + " Cannot create connection");
+            logger.info(Arrays.toString(exception.getStackTrace()) + " Cannot create connection");
         }
         return connection;
+    }
+
+    public static void initPerson() {
+        SQLQuery currentQuery = SQLQuery.PERSON_INIT;
+        if (connection != null) {
+            try {
+                String content = Files.readString(currentQuery.getPath(), Charset.defaultCharset());
+                PreparedStatement preparedStatement = connection.prepareStatement(content);
+                preparedStatement.executeQuery();
+            } catch (IOException | SQLException ignored) { }
+        }
+    }
+
+    public static void initUsers() {
+        SQLQuery currentQuery = SQLQuery.USERS_INIT;
+        if (connection != null) {
+            try {
+                String content = Files.readString(currentQuery.getPath(), Charset.defaultCharset());
+                PreparedStatement preparedStatement = connection.prepareStatement(content);
+                preparedStatement.executeQuery();
+            } catch (IOException | SQLException ignored) { }
+        }
     }
 
     public static List<Person> executeQueryReadAll() {

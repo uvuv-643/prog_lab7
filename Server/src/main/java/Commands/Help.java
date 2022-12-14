@@ -36,24 +36,16 @@ public class Help implements Command {
 
     @Override
     public Response execute(Request request, Invoker invoker) {
-        Optional<LoginCredentials> loginCredentials = request.getLoginCredentials();
-        if (loginCredentials.isPresent()) {
-            Request authCheckRequest = new Request("auth", new String[]{ loginCredentials.get().getLogin(), loginCredentials.get().getPassword() });
-            Response response = invoker.execute(authCheckRequest);
-            if (response.isSuccess()) {
-                if (request.getArgs().length == 0) {
-                    StringBuilder helpResult = new StringBuilder();
-                    for (CommandName commandName : CommandName.values()) {
-                        helpResult.append(String.format("%-35s - ", commandName));
-                        helpResult.append(helpTexts.get(commandName)).append("\n");
-                    }
-                    return new Response(true, helpResult.toString());
-                } else {
-                    return new Response(false, "Command add is used without arguments" + request.getArgs().length);
-                }
+        if (request.getArgs().length == 0) {
+            StringBuilder helpResult = new StringBuilder();
+            for (CommandName commandName : helpTexts.keySet()) {
+                helpResult.append(String.format("%-35s - ", commandName));
+                helpResult.append(helpTexts.get(commandName)).append("\n");
             }
+            return new Response(true, helpResult.toString());
+        } else {
+            return new Response(false, "Command add is used without arguments" + request.getArgs().length);
         }
-        return new Response(false, "Failed to login");
     }
 
     public static String getHelp() {

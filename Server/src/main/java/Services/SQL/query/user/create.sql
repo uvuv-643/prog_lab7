@@ -1,2 +1,2 @@
-INSERT INTO users (login, password)
+INSERT INTO lab7_users (login, password)
 VALUES (?, ?) RETURNING id;

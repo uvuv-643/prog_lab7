@@ -1,4 +1,4 @@
-INSERT INTO locations (
+INSERT INTO lab7_locations (
     x,
     y,
     title

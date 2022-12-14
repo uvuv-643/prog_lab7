@@ -1,4 +1,4 @@
-INSERT INTO coordinates (
+INSERT INTO lab7_coordinates (
     x,
     y
 ) VALUES (

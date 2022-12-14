@@ -25,7 +25,7 @@ public class Add implements Command {
             Response response = invoker.execute(authCheckRequest);
             if (response.isSuccess()) {
                 if (request.getArgs().length == 0) {
-                    return receiver.add(request.getPerson(), response.getUserId());
+                    return receiver.add(request.getPerson(), response.getUserId(), loginCredentials.get().getLogin());
                 } else {
                     return new Response(false, "Command <add> is used without arguments");
                 }

@@ -1,4 +1,4 @@
-INSERT INTO persons (
+INSERT INTO lab7_persons (
     name,
     coordinates_id,
     height,

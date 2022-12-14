@@ -51,6 +51,9 @@ public class Invoker {
         this.register(String.valueOf(CommandName.SAVE), new Save(receiver));
         this.register(String.valueOf(CommandName.SHOW), new Show(receiver));
         this.register(String.valueOf(CommandName.UPDATE), new Update(receiver));
+        this.register(String.valueOf(CommandName.CHECK_ID), new Check(receiver));
+        this.register(String.valueOf(CommandName.AUTH), new Auth(receiver));
+        this.register(String.valueOf(CommandName.REGISTER), new Register(receiver));
     }
 
     /**

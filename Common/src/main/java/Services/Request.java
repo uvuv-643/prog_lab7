@@ -112,7 +112,11 @@ public class Request implements Serializable {
     }
 
     public Optional<LoginCredentials> getLoginCredentials() {
-        return Optional.of(loginCredentials);
+        if (loginCredentials != null) {
+            return Optional.of(loginCredentials);
+        } else {
+            return Optional.empty();
+        }
     }
 
     public void setLoginCredentials(LoginCredentials loginCredentials) {

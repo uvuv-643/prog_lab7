@@ -21,20 +21,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        ArrayList<Person> collection = new ArrayList<>();
-        try {
-            FileManager fileManager = new FileManager();
-            collection = fileManager.readFromFile();
-        } catch (IOException exception) {
-            System.out.println("There is no file with collection or you cannot read collection from file");
-            System.exit(0);
-        } catch (JsonParseException exception) {
-            System.out.println("Cannot parse JSON file");
-            System.exit(0);
-        } catch (NullPointerException exception) {
-            System.out.println("You have to export env path of initial collection before starting working");
-            System.exit(0);
-        }
         Receiver receiver = new Receiver();
         Invoker invoker = new Invoker(receiver);
         Server server = new Server();

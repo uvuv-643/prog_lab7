@@ -22,7 +22,10 @@ public enum CommandName {
     REORDER("reorder"),
     SAVE("save"),
     SHOW("show"),
-    UPDATE("update");
+    UPDATE("update"),
+    CHECK_ID("check_id"),
+    AUTH("auth"),
+    REGISTER("register");
 
     private String commandName;
     CommandName(String commandName) {

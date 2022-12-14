@@ -1,21 +1,21 @@
 SELECT
-    persons.id as id,
-    persons.name as name,
-    coordinates.x as coordinate_x,
-    coordinates.y as coordinate_y,
+    lab7_persons.id as id,
+    lab7_persons.name as name,
+    lab7_coordinates.x as coordinate_x,
+    lab7_coordinates.y as coordinate_y,
     height,
     weight,
     color,
     country,
     (case when location_id IS NULL then false else true end) as is_location_present,
-    locations.x as location_x,
-    locations.y as location_y,
+    lab7_locations.x as location_x,
+    lab7_locations.y as location_y,
     created_at,
-    locations.title as location_title,
+    lab7_locations.title as location_title,
     user_id,
-    users.login as user_login
-FROM persons
-INNER JOIN coordinates ON coordinates.id = persons.coordinates_id
-INNER JOIN users ON persons.user_id = users.id
-LEFT JOIN locations ON locations.id = persons.location_id
+    lab7_users.login as user_login
+FROM lab7_persons
+INNER JOIN lab7_coordinates ON lab7_coordinates.id = lab7_persons.coordinates_id
+INNER JOIN lab7_users ON lab7_persons.user_id = lab7_users.id
+LEFT JOIN lab7_locations ON lab7_locations.id = lab7_persons.location_id
 ORDER BY person_order

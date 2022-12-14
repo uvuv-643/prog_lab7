@@ -1,1 +1,1 @@
-SELECT * FROM persons WHERE id = ? and user_id = ?
+SELECT * FROM lab7_persons WHERE id = ? and user_id = ?

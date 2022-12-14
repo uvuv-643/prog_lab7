@@ -182,4 +182,16 @@ public class Receiver {
         return Optional.of(new Request("print_field_descending_order"));
     }
 
+    public Optional<Request> check(String idRaw) {
+        return Optional.of(new Request("check_id", new String[]{idRaw}));
+    }
+
+    public Optional<Request> auth(String login, String password) {
+        return Optional.of(new Request("auth", new String[]{login, password}));
+    }
+
+    public Optional<Request> register(String login, String password) {
+        return Optional.of(new Request("register", new String[]{login, password}));
+    }
+
 }

@@ -1,17 +1,17 @@
-UPDATE persons as tt SET
+UPDATE lab7_persons AS tt SET
     person_order = (
-        with persons as
+        WITH lab7_persons AS
         (
-            select
-                row_number() over (order by id) as rn1,
-                row_number() over (order by id desc) as rn2,
+            SELECT
+                row_number() over (ORDER BY id) AS rn1,
+                row_number() over (ORDER BY id DESC) AS rn2,
                 *
-            from persons where user_id = ?
+            FROM lab7_persons WHERE user_id = ?
         )
-        select (case when tt.person_order = t1.person_order then t2.person_order end)
-        from persons as t1
-        join persons as t2 on t1.rn1 = t2.rn2
-        WHERE (case when tt.person_order = t1.person_order then t2.person_order end) is not null
+        SELECT (CASE WHEN tt.person_order = t1.person_order THEN t2.person_order END)
+        FROM lab7_persons AS t1
+        JOIN lab7_persons AS t2 ON t1.rn1 = t2.rn2
+        WHERE (CASE WHEN tt.person_order = t1.person_order THEN t2.person_order END) IS NOT NULL
     )
 WHERE user_id = ?
 

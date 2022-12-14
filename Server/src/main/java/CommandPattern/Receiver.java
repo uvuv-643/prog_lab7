@@ -14,6 +14,7 @@ import Output.OutputManager;
 import Services.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.security.KeyPair;
 import java.security.PublicKey;
 import java.time.ZonedDateTime;
@@ -80,13 +81,15 @@ public class Receiver {
      * @param person - объект, представленный к добавлению в коллекцию
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response add(Person person, long userId) {
+    public Response add(Person person, long userId, String userLogin) {
         StringBuilder responseText = new StringBuilder();
         try {
             Person personValidated = Person.personCreator(person);
             Optional<Long> personId = personService.create(personValidated, userId);
             if (personId.isPresent()) {
                 personValidated.setId(personId.get());
+                personValidated.setUserId(userId);
+                personValidated.setUserLogin(userLogin);
                 collection.add(personValidated);
                 responseText.append("Successfully added element to collection.");
             } else {
@@ -119,6 +122,9 @@ public class Receiver {
             if (isUpdatedPerson) {
                 for (Person collectionPerson : collection) {
                     if (collectionPerson.getId().equals(id)) {
+                        personValidated.setId(collectionPerson.getId());
+                        personValidated.setUserLogin(collectionPerson.getUserLogin());
+                        personValidated.setUserId(collectionPerson.getUserId());
                         personValidated.setCreationDate(collectionPerson.getCreationDate());
                         collection.set(collection.indexOf(collectionPerson), personValidated);
                     }
@@ -170,7 +176,9 @@ public class Receiver {
     public Response clear(long userId) {
         boolean isCleared = personService.clear(userId);
         if (isCleared) {
-            collection.clear();
+            List<Person> removedItems = this.collection.stream()
+                    .filter(person -> person.getUserId().equals(userId)).toList();
+            collection.removeAll(removedItems);
             return (new Response(true, ""));
         } else {
             return (new Response(false, "Unable to clear collection"));
@@ -244,7 +252,7 @@ public class Receiver {
      * @param person - объект, который необходимо добавить в коллекцию
      * @return Response - ответ на запрос выполнения команды
      */
-    public Response addIfMin(Person person, long userId) {
+    public Response addIfMin(Person person, long userId, String userLogin) {
         StringBuilder responseText = new StringBuilder();
         try {
             Person personValidated = Person.personCreator(person);
@@ -253,6 +261,8 @@ public class Receiver {
                 Optional<Long> personId = personService.create(personValidated, userId);
                 if (personId.isPresent()) {
                     personValidated.setId(personId.get());
+                    personValidated.setUserId(userId);
+                    personValidated.setUserLogin(userLogin);
                     collection.add(personValidated);
                     responseText.append("Successfully added element to collection.");
                     return (new Response(true, responseText.toString()));
@@ -282,6 +292,13 @@ public class Receiver {
 //        Collections.reverse(order);
         boolean isReordered = personService.reorder(userId);
         if (isReordered) {
+            List<PersonOrderPair> order = new ArrayList<>(IntStream.range(0, this.collection.size())
+                    .mapToObj(i -> new PersonOrderPair(this.collection.get(i), i))
+                    .filter(personOrderPair -> personOrderPair.getPerson().getUserId().equals(userId))
+                    .toList());
+            for (int personOrderIndex = 0; personOrderIndex < order.size(); personOrderIndex++) {
+                this.collection.set(order.get(personOrderIndex).getOrder(), order.get(order.size() - personOrderIndex - 1).getPerson());
+            }
             return new Response(true, "Successfully cleared");
         } else {
             return new Response(false, "You cannot reorder your collection");
@@ -333,9 +350,9 @@ public class Receiver {
      */
     public Response printFieldDescendingOrder() {
         StringBuilder responseText = new StringBuilder();
-        Country[] countries = collection.stream().sorted(Comparator.reverseOrder()).map(Person::getNationality).toArray(Country[]::new);
+        Country[] countries = collection.stream().sorted(Comparator.reverseOrder()).map(Person::getNationality).filter(Objects::nonNull).toList().toArray(Country[]::new);
         if (countries.length == 0) {
-            responseText.append("Collection in empty");
+            responseText.append("Collection have no elements with filled location");
         } else {
             responseText.append("Field <Location> in collection: ").append("\n");
             for (Country country : countries) {

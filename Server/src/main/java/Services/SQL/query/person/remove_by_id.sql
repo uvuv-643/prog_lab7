@@ -1,1 +1,1 @@
-DELETE FROM persons WHERE id = ?
+DELETE FROM lab7_persons WHERE id = ?

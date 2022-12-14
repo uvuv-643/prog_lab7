@@ -3,6 +3,7 @@ package App;
 import CommandPattern.Invoker;
 import Exceptions.ExecuteCommandException;
 import Exceptions.ExecuteScriptException;
+import Input.UserManager;
 import Services.LoginCredentials;
 import Services.Request;
 import Services.Response;
@@ -29,6 +30,8 @@ public class Terminal {
 
     /** Клиент, работающий в текущем терминале */
     private final Client client;
+
+    private LoginCredentials loginCredentials = null;
 
      /**
       * Инициализация терминала
@@ -66,14 +69,23 @@ public class Terminal {
 
     }
 
+    private void startAuth() {
+        UserManager userManager = new UserManager(client, invoker);
+        this.loginCredentials = userManager.loginOrRegister();
+    }
+
      /**
       * Начать взаимодействие с пользователем посредством стандартного потока ввода
       */
     public void startKeyboard() {
+        startAuth();
         this.scanner = new Scanner(System.in);
         System.out.println("Hint: type help to get list of the commands");
         while (true) {
             System.out.println("Enter command: ");
+            if (loginCredentials == null) {
+                System.out.println("User <auth> if you want to login / register");
+            }
             String commandLine = scanner.nextLine();
             try {
                 invoker.clearScriptList();
@@ -95,11 +107,25 @@ public class Terminal {
             throw new ExecuteCommandException("Given empty command");
         }
         String command = commandLine[0].trim();
+        if (command.equals("auth")) {
+            startAuth();
+            return;
+        }
+        if (command.equals("update")) {
+            Optional<Request> lineHandlerResult = invoker.execute("check_id", Arrays.copyOfRange(commandLine, 1, commandLine.length));
+            if (lineHandlerResult.isPresent()) {
+                lineHandlerResult.get().setLoginCredentials(loginCredentials);
+                client.send(lineHandlerResult.get());
+                Optional<Response> response = client.receive();
+                if (response.isEmpty() || !response.get().isSuccess()) {
+                    System.out.println("You cannot update this element");
+                    return;
+                }
+            }
+        }
         Optional<Request> lineHandlerResult = invoker.execute(command, Arrays.copyOfRange(commandLine, 1, commandLine.length));
         if (lineHandlerResult.isPresent()) {
-            String login = "admin";
-            String password = "admin";
-            lineHandlerResult.get().setLoginCredentials(new LoginCredentials(login, password));
+            lineHandlerResult.get().setLoginCredentials(loginCredentials);
             System.out.println("Executing <" + command + ">...");
             Request request = lineHandlerResult.get();
             client.send(request);
