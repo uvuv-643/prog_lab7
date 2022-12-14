@@ -5,6 +5,8 @@ import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.DatagramChannel;
 import java.util.Optional;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import Services.Request;
 import Services.Response;
@@ -22,8 +24,11 @@ public class Server {
     /** Величина буффера для записи / чтения информации */
     private final int BUF_SIZE = 32768;
 
+    private static final int SECOND_THREAD_POOL_COUNT = 5;
+
     /** Канал датаграмм для обработки получения запросов и получения ответов */
     private DatagramChannel datagramChannel;
+    private ThreadPoolExecutor executor;
 
     /**
      * Инициализация объекта класса Server по умолчанию.
@@ -34,6 +39,7 @@ public class Server {
             this.datagramChannel = DatagramChannel.open();
             this.datagramChannel.bind(new InetSocketAddress(SERVICE_PORT));
             this.datagramChannel.configureBlocking(false);
+            this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(SECOND_THREAD_POOL_COUNT);
             logger.info("Server started on port " + SERVICE_PORT);
         } catch (IOException ex) {
             logger.info("Server cannot start working");
@@ -74,16 +80,18 @@ public class Server {
      * @see Response
      */
     public void send(Response response, SocketAddress clientAddress) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try {
-            logger.info("Request was sent to address " + clientAddress);
-            logger.info("Request: " + response);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-            objectOutputStream.writeObject(response);
-            this.datagramChannel.send(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()), clientAddress);
-        } catch (IOException e) {
-            logger.info("Error when sending response to client");
-        }
+        executor.execute(() -> {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            try {
+                logger.info("Request was sent to address " + clientAddress);
+                logger.info("Request: " + response);
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+                objectOutputStream.writeObject(response);
+                this.datagramChannel.send(ByteBuffer.wrap(byteArrayOutputStream.toByteArray()), clientAddress);
+            } catch (IOException e) {
+                logger.info("Error when sending response to client");
+            }
+        });
     }
 
 }

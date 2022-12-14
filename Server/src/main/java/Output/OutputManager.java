@@ -3,6 +3,7 @@ package Output;
 import Entities.Person;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Класс для вывода информации клиенту с сервера
@@ -16,7 +17,7 @@ public class OutputManager {
      * @param collection - исходная коллекция
      * @return String - текстовое представление коллекции
      */
-    public String showCollection(ArrayList<Person> collection) {
+    public String showCollection(List<Person> collection) {
         StringBuilder stringBuilder = new StringBuilder();
         if (collection.isEmpty()) {
             stringBuilder.append("Collection is empty").append("\n");

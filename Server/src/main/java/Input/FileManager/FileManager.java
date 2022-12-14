@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -38,11 +39,11 @@ public class FileManager {
 
     /**
      * Прочитать информацию с файла в коллекцию
-     * @return ArrayList - коллекция, прочитанная из файла
+     * @return List - коллекция, прочитанная из файла
      * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
      * @throws NullPointerException - выбрасывается в случае проблем с обработкой JSON
      */
-    public ArrayList<Person> readFromFile() throws IOException {
+    public List<Person> readFromFile() throws IOException {
         Scanner scanner = new Scanner(new File(path));
         StringBuilder fileData = new StringBuilder();
         while (scanner.hasNextLine()) {
@@ -53,7 +54,7 @@ public class FileManager {
         if (persons == null) {
             persons = new Person[]{};
         }
-        ArrayList<Person> collection = new ArrayList<>(Arrays.asList(persons));
+        List<Person> collection = new ArrayList<>(Arrays.asList(persons));
         scanner.close();
         return collection;
     }
@@ -63,7 +64,7 @@ public class FileManager {
      * @param collection - коллекция, которую необходимо записать
      * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
      */
-    public void writeInFile(ArrayList<Person> collection) throws IOException {
+    public void writeInFile(List<Person> collection) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter(path));
         String data = gson.toJson(collection.toArray(Person[]::new));
         out.write(data);

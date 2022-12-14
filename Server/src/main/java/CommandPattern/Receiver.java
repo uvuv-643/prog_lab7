@@ -14,9 +14,6 @@ import Output.OutputManager;
 import Services.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.security.KeyPair;
-import java.security.PublicKey;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -39,21 +36,21 @@ public class Receiver {
     private final IDValidator idValidator = new IDValidator(personService);
 
     /** Коллекция, над которой выполняются команды */
-    private final ArrayList<Person> collection;
+    private final List<Person> collection;
 
     /**
      * Создание экземпляра исполнителя команд
      */
     public Receiver() {
         creationDate = ZonedDateTime.now();
-        this.collection = new ArrayList<>(personService.readAll());
+        this.collection = Collections.synchronizedList(new ArrayList<>(personService.readAll()));
     }
 
     /**
      * Getter для поля collection
      * @return ArrayList - коллекция
      */
-    public ArrayList<Person> getCollection() {
+    public List<Person> getCollection() {
         return this.collection;
     }
 
@@ -120,13 +117,15 @@ public class Receiver {
             Person personValidated = Person.personCreator(person);
             boolean isUpdatedPerson = personService.updateById(id, personValidated, userId);
             if (isUpdatedPerson) {
-                for (Person collectionPerson : collection) {
-                    if (collectionPerson.getId().equals(id)) {
-                        personValidated.setId(collectionPerson.getId());
-                        personValidated.setUserLogin(collectionPerson.getUserLogin());
-                        personValidated.setUserId(collectionPerson.getUserId());
-                        personValidated.setCreationDate(collectionPerson.getCreationDate());
-                        collection.set(collection.indexOf(collectionPerson), personValidated);
+                synchronized (collection) {
+                    for (Person collectionPerson : collection) {
+                        if (collectionPerson.getId().equals(id)) {
+                            personValidated.setId(collectionPerson.getId());
+                            personValidated.setUserLogin(collectionPerson.getUserLogin());
+                            personValidated.setUserId(collectionPerson.getUserId());
+                            personValidated.setCreationDate(collectionPerson.getCreationDate());
+                            collection.set(collection.indexOf(collectionPerson), personValidated);
+                        }
                     }
                 }
                 return (new Response(true, responseText.toString()));
@@ -153,8 +152,10 @@ public class Receiver {
             try {
                 boolean isRemovedPerson = personService.removeById(id);
                 if (isRemovedPerson) {
-                    Optional<Person> elementInCollection = collection.stream().filter((element) -> element.getId().equals(id)).findFirst();
-                    elementInCollection.ifPresent(collection::remove);
+                    synchronized (collection) {
+                        Optional<Person> elementInCollection = collection.stream().filter((element) -> element.getId().equals(id)).findFirst();
+                        elementInCollection.ifPresent(collection::remove);
+                    }
                     return (new Response(true, responseText.toString()));
                 } else {
                     throw new ValidationException("Not found element with this id");
@@ -176,9 +177,11 @@ public class Receiver {
     public Response clear(long userId) {
         boolean isCleared = personService.clear(userId);
         if (isCleared) {
-            List<Person> removedItems = this.collection.stream()
-                    .filter(person -> person.getUserId().equals(userId)).toList();
-            collection.removeAll(removedItems);
+            synchronized (collection) {
+                List<Person> removedItems = this.collection.stream()
+                        .filter(person -> person.getUserId().equals(userId)).toList();
+                collection.removeAll(removedItems);
+            }
             return (new Response(true, ""));
         } else {
             return (new Response(false, "Unable to clear collection"));
@@ -256,18 +259,20 @@ public class Receiver {
         StringBuilder responseText = new StringBuilder();
         try {
             Person personValidated = Person.personCreator(person);
-            Optional<Person> min = collection.stream().min(Comparator.comparingInt(Person::getHeight));
-            if (min.isPresent() && personValidated.compareTo(min.get()) < 0 || min.isEmpty()) {
-                Optional<Long> personId = personService.create(personValidated, userId);
-                if (personId.isPresent()) {
-                    personValidated.setId(personId.get());
-                    personValidated.setUserId(userId);
-                    personValidated.setUserLogin(userLogin);
-                    collection.add(personValidated);
-                    responseText.append("Successfully added element to collection.");
-                    return (new Response(true, responseText.toString()));
-                } else {
-                    throw new DatabaseException("Error when creating person");
+            synchronized (collection) {
+                Optional<Person> min = collection.stream().min(Comparator.comparingInt(Person::getHeight));
+                if (min.isPresent() && personValidated.compareTo(min.get()) < 0 || min.isEmpty()) {
+                    Optional<Long> personId = personService.create(personValidated, userId);
+                    if (personId.isPresent()) {
+                        personValidated.setId(personId.get());
+                        personValidated.setUserId(userId);
+                        personValidated.setUserLogin(userLogin);
+                        collection.add(personValidated);
+                        responseText.append("Successfully added element to collection.");
+                        return (new Response(true, responseText.toString()));
+                    } else {
+                        throw new DatabaseException("Error when creating person");
+                    }
                 }
             }
         } catch (ValidationException exception) {
@@ -290,14 +295,18 @@ public class Receiver {
 //                .filter(personOrderPair -> personOrderPair.getPerson().getUserId().equals(userId))
 //                .map(PersonOrderPair::getOrder).toList());
 //        Collections.reverse(order);
+
+
         boolean isReordered = personService.reorder(userId);
         if (isReordered) {
-            List<PersonOrderPair> order = new ArrayList<>(IntStream.range(0, this.collection.size())
-                    .mapToObj(i -> new PersonOrderPair(this.collection.get(i), i))
-                    .filter(personOrderPair -> personOrderPair.getPerson().getUserId().equals(userId))
-                    .toList());
-            for (int personOrderIndex = 0; personOrderIndex < order.size(); personOrderIndex++) {
-                this.collection.set(order.get(personOrderIndex).getOrder(), order.get(order.size() - personOrderIndex - 1).getPerson());
+            synchronized (collection) {
+                List<PersonOrderPair> order = new ArrayList<>(IntStream.range(0, this.collection.size())
+                        .mapToObj(i -> new PersonOrderPair(this.collection.get(i), i))
+                        .filter(personOrderPair -> personOrderPair.getPerson().getUserId().equals(userId))
+                        .toList());
+                for (int personOrderIndex = 0; personOrderIndex < order.size(); personOrderIndex++) {
+                    this.collection.set(order.get(personOrderIndex).getOrder(), order.get(order.size() - personOrderIndex - 1).getPerson());
+                }
             }
             return new Response(true, "Successfully cleared");
         } else {
@@ -317,14 +326,16 @@ public class Receiver {
             Optional<Country> nationalityRawValue = nationalityValidator.validate(nationalityRaw).getValidatedData();
             if (nationalityRawValue.isPresent()) {
                 Country nationality = nationalityRawValue.get();
-                ArrayList<Person> filteredCollection = new ArrayList<>(collection.stream().filter((element) -> {
-                    if (element.getNationality() != null) {
-                        return element.getNationality().compareTo(nationality) > 0;
-                    } else {
-                        return false;
-                    }
-                }).toList());
-                responseText.append(outputManager.showCollection(filteredCollection));
+                synchronized (collection) {
+                    ArrayList<Person> filteredCollection = new ArrayList<>(collection.stream().filter((element) -> {
+                        if (element.getNationality() != null) {
+                            return element.getNationality().compareTo(nationality) > 0;
+                        } else {
+                            return false;
+                        }
+                    }).toList());
+                    responseText.append(outputManager.showCollection(filteredCollection));
+                }
             } else {
                 responseText.append(outputManager.showCollection(collection));
             }
@@ -340,8 +351,10 @@ public class Receiver {
      * @return Response - ответ на запрос выполнения команды
      */
     public Response printDescending() {
-        ArrayList<Person> sortedCollection = new ArrayList<>(collection.stream().sorted(Comparator.reverseOrder()).toList());
-        return (new Response(true, outputManager.showCollection(sortedCollection)));
+        synchronized (collection) {
+            ArrayList<Person> sortedCollection = new ArrayList<>(collection.stream().sorted(Comparator.reverseOrder()).toList());
+            return (new Response(true, outputManager.showCollection(sortedCollection)));
+        }
     }
 
     /**
@@ -350,13 +363,15 @@ public class Receiver {
      */
     public Response printFieldDescendingOrder() {
         StringBuilder responseText = new StringBuilder();
-        Country[] countries = collection.stream().sorted(Comparator.reverseOrder()).map(Person::getNationality).filter(Objects::nonNull).toList().toArray(Country[]::new);
-        if (countries.length == 0) {
-            responseText.append("Collection have no elements with filled location");
-        } else {
-            responseText.append("Field <Location> in collection: ").append("\n");
-            for (Country country : countries) {
-                responseText.append(country).append("\n");
+        synchronized (collection) {
+            Country[] countries = collection.stream().sorted(Comparator.reverseOrder()).map(Person::getNationality).filter(Objects::nonNull).toList().toArray(Country[]::new);
+            if (countries.length == 0) {
+                responseText.append("Collection have no elements with filled location");
+            } else {
+                responseText.append("Field <Location> in collection: ").append("\n");
+                for (Country country : countries) {
+                    responseText.append(country).append("\n");
+                }
             }
         }
         return (new Response(true, responseText.toString()));
