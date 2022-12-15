@@ -1,14 +1,10 @@
 package CommandPattern;
 
 import Commands.*;
-import Entities.Person;
-import Exceptions.ExecuteCommandException;
 import Services.Request;
 import Services.Response;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 
 /**
  * Класс, предназначенный для вызова определенной команды

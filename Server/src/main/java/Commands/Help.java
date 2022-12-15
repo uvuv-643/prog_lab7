@@ -3,13 +3,10 @@ package Commands;
 import CommandPattern.Command;
 import CommandPattern.CommandName;
 import CommandPattern.Invoker;
-import Services.LoginCredentials;
 import Services.Request;
 import Services.Response;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Optional;
 
 public class Help implements Command {
 
@@ -29,7 +26,7 @@ public class Help implements Command {
         helpTexts.put(CommandName.REMOVE_AT, RemoveAt.getHelp());
         helpTexts.put(CommandName.REMOVE_BY_ID, RemoveById.getHelp());
         helpTexts.put(CommandName.REORDER, Reorder.getHelp());
-        helpTexts.put(CommandName.SAVE, Save.getHelp());
+        // helpTexts.put(CommandName.SAVE, Save.getHelp());
         helpTexts.put(CommandName.SHOW, Show.getHelp());
         helpTexts.put(CommandName.UPDATE, Update.getHelp());
     }
@@ -39,7 +36,7 @@ public class Help implements Command {
         if (request.getArgs().length == 0) {
             StringBuilder helpResult = new StringBuilder();
             for (CommandName commandName : helpTexts.keySet()) {
-                helpResult.append(String.format("%-35s - ", commandName));
+                helpResult.append(String.format("* %-35s - ", commandName));
                 helpResult.append(helpTexts.get(commandName)).append("\n");
             }
             return new Response(true, helpResult.toString());

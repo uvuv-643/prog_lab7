@@ -43,6 +43,7 @@ public class FileManager {
      * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
      * @throws NullPointerException - выбрасывается в случае проблем с обработкой JSON
      */
+    @Deprecated
     public List<Person> readFromFile() throws IOException {
         Scanner scanner = new Scanner(new File(path));
         StringBuilder fileData = new StringBuilder();
@@ -64,6 +65,7 @@ public class FileManager {
      * @param collection - коллекция, которую необходимо записать
      * @throws IOException - выбрасывается в случае ошибки работы с форматом JSON
      */
+    @Deprecated
     public void writeInFile(List<Person> collection) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter(path));
         String data = gson.toJson(collection.toArray(Person[]::new));
